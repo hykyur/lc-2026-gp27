@@ -1,0 +1,48 @@
+[project]
+name = "lc-2026-gp27"
+version = "0.1.0"
+description = "Group repo for computational logic"
+readme = "README.md"
+authors = [
+    { name = "hykyur", email = "caio.lins18@proton.me" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "cvxpy>=1.9.3",
+    "ipykernel>=7.4.0",
+    "jupyter>=1.1.1",
+    "ortools>=9.15.6755",
+    "z3-solver>=5.1.0.0",
+]
+
+[project.scripts]
+lc-2026-gp27 = "lc_2026_gp27:main"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+include = ["src/**/*.py", "tests/**/*.py"]
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle
+    "F",      # pyflakes
+    "I",      # import sorting
+    "B",      # bugbear
+    "UP",     # pyupgrade
+]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[dependency-groups]
+dev = [
+    "nbstripout>=0.9.1",
+    "pre-commit>=4.6.2",
+    "pytest>=9.1.1",
+    "ruff>=0.16.9",
+]
