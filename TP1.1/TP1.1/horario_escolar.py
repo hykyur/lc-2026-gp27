@@ -42,6 +42,19 @@ with app.setup:
         for dia in DIAS
         for periodo in PERIODOS
     }
+# R1 - Uma aula por turma em cada período
+for turma in T["turma"]:
+    for dia in DIAS:
+        for periodo in PERIODOS:
+            horario.add(sum(x[(turma, disciplina, dia, periodo)]for disciplina in D["disciplina"]) <= 1)
+
+# R2 - Carga semanal exata
+for turma in T["turma"]:
+    for linha in D.iter_rows(named=True):
+        disciplina = linha["disciplina"]
+        carga = linha["carga_semanal"]
+        horario.add(sum(x[(turma, disciplina, dia, periodo)]for dia in DIAS for periodo in PERIODOS) == carga)
+
 
 
 if __name__ == "__main__":
