@@ -13,6 +13,7 @@ dependencies = [
     "jupyter>=1.1.1",
     "marimo>=0.25.0",
     "ortools>=9.15.6755",
+    "polars>=1.44.2",
     "z3-solver>=5.1.0.0",
 ]
 
