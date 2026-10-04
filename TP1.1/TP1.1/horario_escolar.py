@@ -56,6 +56,26 @@ for turma in T["turma"]:
         horario.add(sum(x[(turma, disciplina, dia, periodo)]for dia in DIAS for periodo in PERIODOS) == carga)
 
 
+for turma in T["turma"]:
+    for linha in D.iter_rows(named=True):
+        disciplina = linha["disciplina"]
+        dupla = linha["duplo_periodo"] == "sim"
+        for dia in DIAS:
+            # R3 - No máximo uma aula da mesma disciplina por dia, por turma — exceto disciplinas de duplo período (ver R4), em que o bloco de 2 tempos conta como uma só ocorrência nesse dia.
+            limite = 2 if dupla else 1
+            horario.add(sum(x[(turma, disciplina, dia, periodo)]for periodo in PERIODOS) <= limite)
+            # R4 - Disciplinas marcadas duplo_periodo=sim só podem ser dadas em blocos de 2 tempos consecutivos, no mesmo dia (nunca um tempo isolado).
+            if dupla:
+                for periodo in PERIODOS:
+                    vizinhos = []
+                    if periodo > 1:
+                        vizinhos.append(x[(turma, disciplina, dia, periodo - 1)])
+
+                    if periodo < 5:
+                        vizinhos.append(x[(turma, disciplina, dia, periodo + 1)])
+
+                    horario.add(x[(turma, disciplina, dia, periodo)]<= sum(vizinhos))
+
 
 if __name__ == "__main__":
     app.run()
