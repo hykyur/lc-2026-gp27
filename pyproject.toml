@@ -14,6 +14,7 @@ dependencies = [
     "marimo>=0.25.0",
     "ortools>=9.15.6755",
     "polars>=1.44.2",
+    "pydantic>=2.13.5",
     "z3-solver>=5.1.0.0",
 ]
 
@@ -27,7 +28,7 @@ build-backend = "uv_build"
 [tool.ruff]
 line-length = 100
 target-version = "py313"
-include = ["src/**/*.py", "tests/**/*.py"]
+include = ["src/**/*.py", "tests/**/*.py", "TP1.1/TP1.1/*.py"]
 
 [tool.ruff.lint]
 select = [
@@ -46,5 +47,13 @@ dev = [
     "nbstripout>=0.9.1",
     "pre-commit>=4.6.2",
     "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
     "ruff>=0.16.9",
 ]
+
+[tool.pytest.ini_options]
+addopts = "--cov --cov-report=term-missing"
+pythonpath = ["TP1.1/TP1.1"]
+
+[tool.coverage.run]
+include = ["TP1.1/TP1.1/horario_escolar.py", "TP1.1/TP1.1/schemas.py"]
