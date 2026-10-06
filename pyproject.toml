@@ -28,7 +28,7 @@ build-backend = "uv_build"
 [tool.ruff]
 line-length = 100
 target-version = "py313"
-include = ["src/**/*.py", "tests/**/*.py", "TP1.1/TP1.1/*.py"]
+include = ["src/**/*.py", "tests/**/*.py", "TP1.1/TP1.1/*.py", "TP1.2/*.py"]
 
 [tool.ruff.lint]
 select = [
@@ -53,7 +53,8 @@ dev = [
 
 [tool.pytest.ini_options]
 addopts = "--cov --cov-report=term-missing"
-pythonpath = ["TP1.1/TP1.1"]
+pythonpath = ["TP1.1/TP1.1", "TP1.2"]
+
 
 [tool.coverage.run]
-include = ["TP1.1/TP1.1/horario_escolar.py", "TP1.1/TP1.1/schemas.py"]
+include = ["TP1.1/TP1.1/horario_escolar.py", "TP1.1/TP1.1/schemas.py", "TP1.2/sudoku.py", "TP1.2/sudoku_schemas.py"]
