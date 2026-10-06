@@ -248,8 +248,12 @@ def _(mo):
 
     ## Entrega
 
-    - Começe por criar uma estrutura "Git" na directoria local  TP1.1 que vai conter todos os elenetos no trabalho. Se ainda não tiver crie um utilizador GitHub para onde deve enviar ("push") os "commits" locais. No GitHub  o repositório deve ser  "clonable" após a data de entrega do trabalho.
-    - Relatório na forma de um ou mais notebooks Marimo; o notebook principal "horario_escolar.py" constrói-se editando o notebook anexo.
+    - Começe por criar uma estrutura "Git" na directoria local  TP1.1 que vai conter todos
+    - os elementos no trabalho. Se ainda não tiver crie um utilizador GitHub para onde deve enviar
+    - ("push") os "commits" locais.
+    - No GitHub  o repositório deve ser  "clonable" após a data de entrega do trabalho.
+    - Relatório na forma de um ou mais notebooks Marimo; o notebook principal "horario_escolar.py"
+    - constrói-se editando o notebook anexo.
     - Versão PDF do relatório
 
 
