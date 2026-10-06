@@ -7,7 +7,7 @@
   "cells": [
     {
       "id": "setup",
-      "code_hash": "674e89bf89f90e4446caa0ec0bc6a6e8",
+      "code_hash": "b1bdf98456226adb1f1ad55d9d336038",
       "outputs": [
         {
           "type": "data",
@@ -20,7 +20,107 @@
     },
     {
       "id": "Hbol",
-      "code_hash": "d16f2203bde6cfad49892ab579f560da",
+      "code_hash": "8ab1ce1fe93c78a6076e4fa7b928e246",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "name 'mo' is not defined",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_Hbol_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "a76a3d0c0d4e942bf45af5c2cc0ef72c",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "name 'mo' is not defined",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_MJUe_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "vblA",
+      "code_hash": "ad36a5650ac7f280ceccfb0ee1fe42fe",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "name 'mo' is not defined",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_vblA_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "aab9289b3c8e794ee01a3f6897c77a66",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "name 'mo' is not defined",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_bkHC_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "4a1961ef18fe85d79ebb9f288a5be387",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "name 'mo' is not defined",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_lEQa_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "PKri",
+      "code_hash": "d2bc106961a67eae2d2975be64e7c1b0",
       "outputs": [
         {
           "type": "data",
@@ -32,47 +132,207 @@
       "console": []
     },
     {
-      "id": "MJUe",
-      "code_hash": "817e7e4d0854a52cab16ee0f831bf3ce",
+      "id": "Xref",
+      "code_hash": "6dc94379d068274f2743758803d2b8bb",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "name 'mo' is not defined",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_Xref_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "fa088ce945a07a3a3f485e586402c4b2",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "name 'mo' is not defined",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_SFPL_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "ca36bb15faf8295ec802238bbb75a8d2",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "name 'mo' is not defined",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_BYtC_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "0399e00f43d5b8d31f400dafc01d6ab3",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "name 'mo' is not defined",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_RGSE_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "22ed52a0b424b746bad182aae27a9667",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "name 'mo' is not defined",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_Kclp_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "emfo",
+      "code_hash": "1ded14ac200f3c6d4274843bd2cfa20f",
       "outputs": [
         {
           "type": "data",
           "data": {
-            "text/html": "<marimo-ui-element object-id='MJUe-0' random-id='4c54f107-d22b-90e9-ce38-783b67a7cabe'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qua&#92;&quot;,&#92;&quot;periodo&#92;&quot;:1},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qui&#92;&quot;,&#92;&quot;periodo&#92;&quot;:5},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Sex&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Seg&#92;&quot;,&#92;&quot;periodo&#92;&quot;:5},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qua&#92;&quot;,&#92;&quot;periodo&#92;&quot;:5},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qui&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Sex&#92;&quot;,&#92;&quot;periodo&#92;&quot;:4},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Ci&#92;&#92;u00eancias&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Seg&#92;&quot;,&#92;&quot;periodo&#92;&quot;:1},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Ci&#92;&#92;u00eancias&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:2}]&quot;' data-total-rows='34' data-total-columns='4' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;turma&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;disciplina&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;dia&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;periodo&quot;,[&quot;integer&quot;,&quot;i64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+            "text/html": "<marimo-ui-element object-id='emfo-0' random-id='7ac4f15f-172d-8c87-ff3a-0f292ba1c42f'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qua&#92;&quot;,&#92;&quot;periodo&#92;&quot;:2},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qui&#92;&quot;,&#92;&quot;periodo&#92;&quot;:4},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Sex&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Seg&#92;&quot;,&#92;&quot;periodo&#92;&quot;:2},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:5},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qua&#92;&quot;,&#92;&quot;periodo&#92;&quot;:4},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Sex&#92;&quot;,&#92;&quot;periodo&#92;&quot;:5},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Ci&#92;&#92;u00eancias&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:1},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Ci&#92;&#92;u00eancias&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qui&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3}]&quot;' data-total-rows='34' data-total-columns='4' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;turma&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;disciplina&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;dia&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;periodo&quot;,[&quot;integer&quot;,&quot;i64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
           }
         }
       ],
       "console": []
     },
     {
-      "id": "vblA",
+      "id": "Hstk",
+      "code_hash": "fe3b4d1e8dfb1abf2277b0e5434c31d5",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "name 'mo' is not defined",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_Hstk_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "nWHF",
       "code_hash": "61c5f91f291f27a7bcd9aeedeb57caaa",
       "outputs": [
         {
           "type": "data",
           "data": {
-            "text/html": "<marimo-ui-element object-id='vblA-0' random-id='bfcc8f9b-4cc1-9c16-e6d1-feb004204b82'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;abordagem&#92;&quot;:&#92;&quot;do zero&#92;&quot;,&#92;&quot;estado&#92;&quot;:&#92;&quot;OPTIMAL&#92;&quot;,&#92;&quot;tempo (s)&#92;&quot;:0.053894392000000006,&#92;&quot;aulas alteradas&#92;&quot;:28},{&#92;&quot;abordagem&#92;&quot;:&#92;&quot;incremental&#92;&quot;,&#92;&quot;estado&#92;&quot;:&#92;&quot;OPTIMAL&#92;&quot;,&#92;&quot;tempo (s)&#92;&quot;:0.026833633000000003,&#92;&quot;aulas alteradas&#92;&quot;:0}]&quot;' data-total-rows='2' data-total-columns='4' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;abordagem&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;estado&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;tempo (s)&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;aulas alteradas&quot;,[&quot;integer&quot;,&quot;i64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+            "text/html": "<marimo-ui-element object-id='nWHF-0' random-id='75628210-ce61-8a59-3330-ceb480099502'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;abordagem&#92;&quot;:&#92;&quot;do zero&#92;&quot;,&#92;&quot;estado&#92;&quot;:&#92;&quot;OPTIMAL&#92;&quot;,&#92;&quot;tempo (s)&#92;&quot;:0.016509936,&#92;&quot;aulas alteradas&#92;&quot;:30},{&#92;&quot;abordagem&#92;&quot;:&#92;&quot;incremental&#92;&quot;,&#92;&quot;estado&#92;&quot;:&#92;&quot;OPTIMAL&#92;&quot;,&#92;&quot;tempo (s)&#92;&quot;:0.010027748000000001,&#92;&quot;aulas alteradas&#92;&quot;:0}]&quot;' data-total-rows='2' data-total-columns='4' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;abordagem&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;estado&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;tempo (s)&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;aulas alteradas&quot;,[&quot;integer&quot;,&quot;i64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
           }
         }
       ],
       "console": []
     },
     {
-      "id": "bkHC",
+      "id": "iLit",
+      "code_hash": "660e3a45f02c50f6fefc703850a7a597",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "name 'mo' is not defined",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_iLit_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "ZHCJ",
       "code_hash": "55ad96c0cdead8f544e8de1120c85caf",
       "outputs": [
         {
           "type": "data",
           "data": {
-            "text/html": "<marimo-ui-element object-id='bkHC-0' random-id='af84d080-1231-42db-acce-a0fe783c62b0'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qua&#92;&quot;,&#92;&quot;periodo&#92;&quot;:1},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qui&#92;&quot;,&#92;&quot;periodo&#92;&quot;:5},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Sex&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Seg&#92;&quot;,&#92;&quot;periodo&#92;&quot;:5},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qua&#92;&quot;,&#92;&quot;periodo&#92;&quot;:5},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qui&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Sex&#92;&quot;,&#92;&quot;periodo&#92;&quot;:4},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Ci&#92;&#92;u00eancias&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Seg&#92;&quot;,&#92;&quot;periodo&#92;&quot;:1},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Ci&#92;&#92;u00eancias&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:2}]&quot;' data-total-rows='34' data-total-columns='4' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;turma&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;disciplina&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;dia&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;periodo&quot;,[&quot;integer&quot;,&quot;i64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+            "text/html": "<marimo-ui-element object-id='ZHCJ-0' random-id='1aee9b21-e1ff-fdea-cc36-f4d5e9186f0b'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qua&#92;&quot;,&#92;&quot;periodo&#92;&quot;:2},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qui&#92;&quot;,&#92;&quot;periodo&#92;&quot;:4},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Sex&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Seg&#92;&quot;,&#92;&quot;periodo&#92;&quot;:2},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:5},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qua&#92;&quot;,&#92;&quot;periodo&#92;&quot;:4},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Sex&#92;&quot;,&#92;&quot;periodo&#92;&quot;:5},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Ci&#92;&#92;u00eancias&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:1},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Ci&#92;&#92;u00eancias&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qui&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3}]&quot;' data-total-rows='34' data-total-columns='4' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;turma&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;disciplina&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;dia&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;periodo&quot;,[&quot;integer&quot;,&quot;i64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
           }
         }
       ],
       "console": []
     },
     {
-      "id": "lEQa",
-      "code_hash": "544cd1f11a30b6541cfb4ae41e122244",
+      "id": "ROlb",
+      "code_hash": "9269cc37556804315990bde99df83620",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "name 'mo' is not defined",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_ROlb_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "6e0685b28cf4341adc1e58f15e85fabd",
       "outputs": [
         {
           "type": "data",
@@ -84,17 +344,57 @@
       "console": []
     },
     {
-      "id": "PKri",
-      "code_hash": "8ebd1b023374d83eb2e172a1caa283b1",
+      "id": "TqIu",
+      "code_hash": "9f55f662435f30c6b5f5e6cddff66852",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "name 'mo' is not defined",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_TqIu_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "397879f7bf676224407e1d3d880b25ed",
       "outputs": [
         {
           "type": "data",
           "data": {
-            "text/html": "<marimo-ui-element object-id='PKri-0' random-id='248e58ec-6404-b463-d116-ea0484703b1d'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;abordagem&#92;&quot;:&#92;&quot;do zero&#92;&quot;,&#92;&quot;estado&#92;&quot;:&#92;&quot;OPTIMAL&#92;&quot;,&#92;&quot;tempo (s)&#92;&quot;:0.17941041900000002,&#92;&quot;quantidade de gaps&#92;&quot;:8},{&#92;&quot;abordagem&#92;&quot;:&#92;&quot;minimiza&#92;&#92;u00e7&#92;&#92;u00e3o de gaps&#92;&quot;,&#92;&quot;estado&#92;&quot;:&#92;&quot;OPTIMAL&#92;&quot;,&#92;&quot;tempo (s)&#92;&quot;:0.14378951,&#92;&quot;quantidade de gaps&#92;&quot;:0}]&quot;' data-total-rows='2' data-total-columns='4' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;abordagem&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;estado&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;tempo (s)&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;quantidade de gaps&quot;,[&quot;integer&quot;,&quot;i64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+            "text/html": "<marimo-ui-element object-id='Vxnm-0' random-id='41052f2e-15b5-d4fd-3a1b-69a3cfb60ac7'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;abordagem&#92;&quot;:&#92;&quot;sem O1&#92;&quot;,&#92;&quot;estado&#92;&quot;:&#92;&quot;OPTIMAL&#92;&quot;,&#92;&quot;tempo (s)&#92;&quot;:0.023939804000000002,&#92;&quot;buracos&#92;&quot;:5},{&#92;&quot;abordagem&#92;&quot;:&#92;&quot;com O1&#92;&quot;,&#92;&quot;estado&#92;&quot;:&#92;&quot;OPTIMAL&#92;&quot;,&#92;&quot;tempo (s)&#92;&quot;:0.043803196,&#92;&quot;buracos&#92;&quot;:0}]&quot;' data-total-rows='2' data-total-columns='4' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;abordagem&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;estado&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;tempo (s)&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;buracos&quot;,[&quot;integer&quot;,&quot;i64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
           }
         }
       ],
       "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "bd4285996abd8bb02a8f7baf8a40adfe",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "name 'mo' is not defined",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_DnEU_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
     }
   ]
 }
