@@ -1,0 +1,87 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.25.0",
+    "script_metadata_hash": "578990ac0e79da127921a4a8dcb492db"
+  },
+  "cells": [
+    {
+      "id": "setup",
+      "code_hash": "7932d4f997cab591b0d0ca415f57af5a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hbol",
+      "code_hash": "74581c8f9964f0a5b924516a5fefcbe2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"sudoku-generico-como-csp-solucao\">Sudoku gen\u00e9rico como CSP \u2014 solu\u00e7\u00e3o</h1>\n<span class=\"paragraph\"><strong>R1\u2013R3:</strong> <code>box(cells=None, n=3)</code> representa qualquer conjunto de c\u00e9lulas\natrav\u00e9s de um dicion\u00e1rio <code>(linha, coluna) \u2192 valor ou None</code>. As coordenadas\ncome\u00e7am em zero. <code>add</code> valida coordenadas e valores; <code>to_matrix</code> produz\na matriz de apresenta\u00e7\u00e3o. <code>cube(i, j, n=3)</code> e\n<code>path(inicio, fim, n=3)</code> apenas escolhem as c\u00e9lulas do grupo.</span>\n<span class=\"paragraph\"><strong>R4:</strong> <code>pistas_aleatorias(n=3, k=None, seed=None)</code> escolhe <code>k</code> posi\u00e7\u00f5es\ndistintas, por omiss\u00e3o <code>k=n</code>, e atribui valores aleat\u00f3rios entre 1 e <marimo-tex class=\"arithmatex\">||(n^2||)</marimo-tex>.</span>\n<span class=\"paragraph\"><strong>R5\u2013R6:</strong> <code>modelo_csp(n=3)</code> cria uma vari\u00e1vel inteira por c\u00e9lula.\n<code>add(*groups)</code> aplica <code>AllDifferent</code> e fixa os valores de cada grupo.\n<code>montar_sudoku</code> re\u00fane linhas, colunas, blocos e pistas.\n<code>solve()</code> devolve uma matriz ou <code>None</code> quando n\u00e3o h\u00e1 solu\u00e7\u00e3o.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "3c589090223f273e824650005c73c3c1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"modelacao-e-escolhas\">Modela\u00e7\u00e3o e escolhas</h2>\n<span class=\"paragraph\">Para cada c\u00e9lula usamos <marimo-tex class=\"arithmatex\">||(x_{ij}\\in\\{1,\\ldots,n^2\\}||)</marimo-tex>.\nPara cada grupo <marimo-tex class=\"arithmatex\">||(G||)</marimo-tex>, impomos <marimo-tex class=\"arithmatex\">||(\\operatorname{AllDifferent}(x_{ij}:(i,j)\\in G)||)</marimo-tex>\ne, se uma c\u00e9lula tem pista <marimo-tex class=\"arithmatex\">||(v||)</marimo-tex>, impomos <marimo-tex class=\"arithmatex\">||(x_{ij}=v||)</marimo-tex>.\nComo cada linha, coluna e bloco cont\u00e9m <marimo-tex class=\"arithmatex\">||(n^2||)</marimo-tex> c\u00e9lulas, os valores distintos\nno dom\u00ednio indicado s\u00e3o necessariamente todos os valores de 1 a <marimo-tex class=\"arithmatex\">||(n^2||)</marimo-tex>.</span>\n<span class=\"paragraph\">Escolhi <strong>CP-SAT do OR-Tools</strong> porque suporta vari\u00e1veis inteiras e\n<code>AllDifferent</code> diretamente, propagando restri\u00e7\u00f5es durante a pesquisa.\nO modelo desconhece a geometria dos grupos: a l\u00f3gica de restri\u00e7\u00f5es \u00e9 \u00fanica.\nO dicion\u00e1rio permite guardar apenas as c\u00e9lulas pertencentes ao grupo e\nimpede coordenadas duplicadas dentro do mesmo grupo.</span>\n<span class=\"paragraph\"><strong>Pistas aleat\u00f3rias podem ser incompat\u00edveis.</strong> Conforme o enunciado,\nas pistas tamb\u00e9m constituem um grupo <code>AllDifferent</code>: duas pistas com o\nmesmo valor tornam esse grupo imposs\u00edvel, mesmo em c\u00e9lulas afastadas.\nPor isso, mais de <marimo-tex class=\"arithmatex\">||(n^2||)</marimo-tex> pistas num \u00fanico grupo nunca t\u00eam solu\u00e7\u00e3o.\n<code>pistas_aleatorias</code> conserva esta gera\u00e7\u00e3o sem filtrar os valores;\n<code>gerar_e_resolver</code> tenta novas pistas at\u00e9 obter uma solu\u00e7\u00e3o, com um limite\nexpl\u00edcito de 100 tentativas. O solver distingue impossibilidade provada\n(<code>None</code>) de outros estados n\u00e3o conclusivos (exce\u00e7\u00e3o).</span>\n<span class=\"paragraph\">A solu\u00e7\u00e3o encontrada <strong>n\u00e3o garante unicidade</strong>: poucas pistas podem admitir\nv\u00e1rias solu\u00e7\u00f5es, e o exerc\u00edcio pede apenas uma grelha v\u00e1lida.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "5b4f0de4c0d432ee5406d48443204e51",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Testes autom\u00e1ticos conclu\u00eddos:</strong> R1\u2013R6, grelhas 9\u00d79 e 4\u00d74, percursos nos dois sentidos, entradas inv\u00e1lidas, pistas preservadas, grupos arbitr\u00e1rios, CSP sem solu\u00e7\u00e3o e extens\u00e3o diagonal.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "a3561d38d17ad99efc81a292911b84e5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<div style='display: flex;flex: 1;flex-direction: column;justify-content: flex-start;align-items: normal;flex-wrap: nowrap;gap: 0.5rem'><span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"n3-sudoku-99\">n=3: Sudoku 9\u00d79</h3>\n<span class=\"paragraph\">3 pistas aleat\u00f3rias; 1 tentativa(s).</span>\n<span class=\"paragraph\">Pistas (<code>.</code> = c\u00e9lula livre):</span>\n<div class=\"language-text codehilite\"><pre><span></span><code>. . .|. . .|. . .\n. . .|. . .|. . .\n. . .|. . 1|. . .\n-----+-----+-----\n. . .|. . .|. . 6\n. . .|. . .|. . .\n. . .|. . .|. . .\n-----+-----+-----\n. . .|. . .|. . .\n. . .|5 . .|. . .\n. . .|. . .|. . .\n</code></pre></div>\n<span class=\"paragraph\">Solu\u00e7\u00e3o validada:</span>\n<div class=\"language-text codehilite\"><pre><span></span><code>2 3 6|9 8 4|1 5 7\n4 1 5|3 7 6|2 8 9\n7 9 8|2 5 1|6 3 4\n-----+-----+-----\n3 5 4|1 2 7|8 9 6\n1 6 2|8 3 9|4 7 5\n8 7 9|4 6 5|3 1 2\n-----+-----+-----\n5 4 3|7 1 2|9 6 8\n6 2 1|5 9 8|7 4 3\n9 8 7|6 4 3|5 2 1\n</code></pre></div></span><span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"n2-sudoku-44\">n=2: Sudoku 4\u00d74</h3>\n<span class=\"paragraph\">2 pistas aleat\u00f3rias; 1 tentativa(s).</span>\n<span class=\"paragraph\">Pistas (<code>.</code> = c\u00e9lula livre):</span>\n<div class=\"language-text codehilite\"><pre><span></span><code>. .|. .\n1 3|. .\n---+---\n. .|. .\n. .|. .\n</code></pre></div>\n<span class=\"paragraph\">Solu\u00e7\u00e3o validada:</span>\n<div class=\"language-text codehilite\"><pre><span></span><code>4 2|3 1\n1 3|2 4\n---+---\n2 1|4 3\n3 4|1 2\n</code></pre></div></span></div>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "bbb9e3d2d66585a052adfae1cfbee30d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"extensao-e-utilizacao\">Extens\u00e3o e utiliza\u00e7\u00e3o</h2>\n<span class=\"paragraph\">O b\u00f3nus diagonal usa <code>diagonais(n)</code> para construir dois <code>box</code> livres e\npassa-os a <code>montar_sudoku(..., extras=diagonais(n))</code>. Regi\u00f5es irregulares\nou blocos sobrepostos podem, da mesma forma, ser descritos por novos <code>box</code>.</span>\n<span class=\"paragraph\">Para experimentar outra dimens\u00e3o ou outro conjunto aleat\u00f3rio de pistas:</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"n\">grelha</span><span class=\"p\">,</span> <span class=\"n\">pistas</span><span class=\"p\">,</span> <span class=\"n\">tentativas</span> <span class=\"o\">=</span> <span class=\"n\">gerar_e_resolver</span><span class=\"p\">(</span><span class=\"n\">n</span><span class=\"o\">=</span><span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"n\">k</span><span class=\"o\">=</span><span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"n\">seed</span><span class=\"o\">=</span><span class=\"mi\">42</span><span class=\"p\">)</span>\n<span class=\"n\">validar_solucao</span><span class=\"p\">(</span><span class=\"n\">grelha</span><span class=\"p\">,</span> <span class=\"n\">n</span><span class=\"o\">=</span><span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"n\">pistas</span><span class=\"o\">=</span><span class=\"n\">pistas</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mostrar_grelha</span><span class=\"p\">(</span><span class=\"n\">grelha</span><span class=\"p\">,</span> <span class=\"n\">n</span><span class=\"o\">=</span><span class=\"mi\">3</span><span class=\"p\">))</span>\n</code></pre></div>\n<span class=\"paragraph\">Aumentar <code>n</code> aumenta o n\u00famero de vari\u00e1veis para <marimo-tex class=\"arithmatex\">||(n^4||)</marimo-tex>; n\u00e3o foi realizado\no b\u00f3nus de desempenho 36\u00d736 nem a extens\u00e3o tridimensional.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}
