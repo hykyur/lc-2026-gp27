@@ -7,7 +7,7 @@
   "cells": [
     {
       "id": "setup",
-      "code_hash": "b1bdf98456226adb1f1ad55d9d336038",
+      "code_hash": "b255875b7267d7aeec14592a5c32ec5f",
       "outputs": [
         {
           "type": "data",
@@ -23,100 +23,65 @@
       "code_hash": "8ab1ce1fe93c78a6076e4fa7b928e246",
       "outputs": [
         {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "name 'mo' is not defined",
-          "traceback": null
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"gerador-de-horario-escolar-analise-da-resolucao\">Gerador de hor\u00e1rio escolar \u2014 an\u00e1lise da resolu\u00e7\u00e3o</h1>\n<span class=\"paragraph\">Este documento explica como a implementa\u00e7\u00e3o transforma os dados de uma escola\nnum hor\u00e1rio semanal v\u00e1lido e como o adapta quando os recursos mudam.\nA solu\u00e7\u00e3o usa <strong>Polars</strong> para os dados tabulares, <strong>Pydantic</strong> para a sua\nvalida\u00e7\u00e3o, <strong>CP-SAT do OR-Tools</strong> para a resolu\u00e7\u00e3o e <strong>marimo</strong> para apresentar\nc\u00f3digo, fundamenta\u00e7\u00e3o e resultados no mesmo relat\u00f3rio execut\u00e1vel.</span>\n<span class=\"paragraph\">H\u00e1 duas perguntas distintas: <strong>o hor\u00e1rio \u00e9 v\u00e1lido?</strong> e <strong>qual dos hor\u00e1rios\nv\u00e1lidos \u00e9 prefer\u00edvel?</strong> R1\u2013R7 definem a validade, R8 exige a leitura dos CSV\ne O1 prefere hor\u00e1rios com menos buracos para os professores. Quando os dados\nmudam, R9 d\u00e1 prioridade a preservar as aulas do hor\u00e1rio anterior.</span>\n<table>\n<thead>\n<tr>\n<th style=\"text-align: left;\">Etapa</th>\n<th style=\"text-align: left;\">Elemento da implementa\u00e7\u00e3o</th>\n<th style=\"text-align: left;\">Resultado</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: left;\">Importar e validar</td>\n<td style=\"text-align: left;\"><code>HorarioInstance.from_csv</code></td>\n<td style=\"text-align: left;\">Dados estruturados da escola</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">Modelar</td>\n<td style=\"text-align: left;\"><code>HorarioSolver</code> e m\u00e9todos <code>_r1_...</code> a <code>_r7_...</code></td>\n<td style=\"text-align: left;\">Vari\u00e1veis e restri\u00e7\u00f5es CP-SAT</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">Otimizar H0</td>\n<td style=\"text-align: left;\"><code>minimize_buracos()</code> e <code>solve()</code></td>\n<td style=\"text-align: left;\">Hor\u00e1rio inicial com o objetivo O1</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">Adaptar para H1</td>\n<td style=\"text-align: left;\"><code>incremental(h0)</code> e <code>solve()</code></td>\n<td style=\"text-align: left;\">Hor\u00e1rio que favorece a conserva\u00e7\u00e3o de H0</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">Avaliar</td>\n<td style=\"text-align: left;\">Tabelas Polars e <code>contar_buracos</code></td>\n<td style=\"text-align: left;\">Estados, tempos, altera\u00e7\u00f5es e buracos</td>\n</tr>\n</tbody>\n</table>\n<span class=\"paragraph\">As explica\u00e7\u00f5es seguintes descrevem o c\u00f3digo existente. Os exemplos num\u00e9ricos\nilustram os CSV fornecidos; as decis\u00f5es do solver continuam a ser calculadas\na partir dos ficheiros, sem introduzir esses exemplos como dados do modelo.</span></span>"
+          }
         }
       ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_Hbol_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "console": []
     },
     {
       "id": "MJUe",
       "code_hash": "a76a3d0c0d4e942bf45af5c2cc0ef72c",
       "outputs": [
         {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "name 'mo' is not defined",
-          "traceback": null
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"1-porque-e-que-marimo-e-uma-boa-opcao\">1. Porque \u00e9 que marimo \u00e9 uma boa op\u00e7\u00e3o?</h2>\n<span class=\"paragraph\">O trabalho pede um relat\u00f3rio que permita compreender e executar a solu\u00e7\u00e3o.\nAqui, cada explica\u00e7\u00e3o \u00e9 uma c\u00e9lula <code>mo.md</code>, junto das c\u00e9lulas que produzem\nos resultados. Markdown organiza t\u00edtulos, tabelas e c\u00f3digo; as f\u00f3rmulas\nusam LaTeX em strings <code>r\"...\"</code>, preservando as barras invertidas.\n<a href=\"https://docs.marimo.io/api/markdown/\" rel=\"noopener noreferrer\" target=\"_blank\">Documenta\u00e7\u00e3o de Markdown do marimo</a>.</span>\n<span class=\"paragraph\"><strong>Execu\u00e7\u00e3o por depend\u00eancias.</strong> O marimo analisa as vari\u00e1veis definidas e usadas\nem cada c\u00e9lula e constr\u00f3i um grafo de depend\u00eancias. Ao executar uma c\u00e9lula\nalterada, atualiza as suas dependentes no modo autom\u00e1tico. Por exemplo,\na compara\u00e7\u00e3o incremental depende de <code>h0</code>; o hor\u00e1rio apresentado a seguir\ndepende de <code>h1</code>. Isto reduz resultados desatualizados por execu\u00e7\u00e3o fora de\nordem. Alterar um CSV no disco, por si s\u00f3, n\u00e3o assegura uma atualiza\u00e7\u00e3o:\n\u00e9 necess\u00e1rio voltar a executar a c\u00e9lula que o l\u00ea.</span>\n<span class=\"paragraph\"><strong>Cuidado com objetos mut\u00e1veis.</strong> O marimo n\u00e3o acompanha muta\u00e7\u00f5es internas,\ncomo adicionar restri\u00e7\u00f5es a <code>s0.model</code> noutra c\u00e9lula. Por isso, criar <code>s0</code>,\naplicar O1 e resolver na mesma c\u00e9lula \u00e9 uma boa decis\u00e3o. H1 usa outro solver,\ncriado e configurado na sua pr\u00f3pria c\u00e9lula.\n<a href=\"https://docs.marimo.io/guides/reactivity/\" rel=\"noopener noreferrer\" target=\"_blank\">Modelo de execu\u00e7\u00e3o do marimo</a>.</span>\n<span class=\"paragraph\"><strong>C\u00f3digo reutiliz\u00e1vel.</strong> <code>app.setup</code> re\u00fane os imports e caminhos;\n<code>@app.class_definition</code> e <code>@app.function</code> permitem importar <code>HorarioSolver</code>\ne <code>contar_buracos</code> nos testes sem executar as c\u00e9lulas de demonstra\u00e7\u00e3o.\nEsta organiza\u00e7\u00e3o aproxima o notebook de um m\u00f3dulo Python test\u00e1vel.\n<a href=\"https://docs.marimo.io/guides/reusing_functions/\" rel=\"noopener noreferrer\" target=\"_blank\">Reutiliza\u00e7\u00e3o de fun\u00e7\u00f5es e classes</a>.</span>\n<span class=\"paragraph\"><strong>Revis\u00e3o e entrega.</strong> O notebook \u00e9 guardado num ficheiro <code>.py</code>, conveniente\npara ler diferen\u00e7as no Git, e pode ser apresentado ou exportado como\nrelat\u00f3rio. <a href=\"https://docs.marimo.io/faq/\" rel=\"noopener noreferrer\" target=\"_blank\">Perguntas frequentes do marimo</a>.\nA reprodu\u00e7\u00e3o completa tamb\u00e9m exige os CSV, <code>schemas.py</code>, o pacote local\ncom as constantes e as depend\u00eancias do projeto; o notebook n\u00e3o \u00e9 aut\u00f3nomo.</span></span>"
+          }
         }
       ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_MJUe_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "console": []
     },
     {
       "id": "vblA",
       "code_hash": "ad36a5650ac7f280ceccfb0ee1fe42fe",
       "outputs": [
         {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "name 'mo' is not defined",
-          "traceback": null
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"2-porque-se-escolheu-polars-em-vez-de-pandas\">2. Porque se escolheu Polars em vez de pandas?</h2>\n<span class=\"paragraph\"><strong>Polars \u00e9 uma escolha adequada para este projeto</strong>, porque a mesma biblioteca\nl\u00ea os CSV em <code>schemas.py</code> e apresenta os hor\u00e1rios e as compara\u00e7\u00f5es neste\nnotebook. N\u00e3o \u00e9 necess\u00e1rio acrescentar pandas para estas opera\u00e7\u00f5es.</span>\n<table>\n<thead>\n<tr>\n<th style=\"text-align: left;\">Aspeto</th>\n<th style=\"text-align: left;\">Vantagem de Polars</th>\n<th style=\"text-align: left;\">Aplica\u00e7\u00e3o nesta resolu\u00e7\u00e3o</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: left;\">Colunas e tipos</td>\n<td style=\"text-align: left;\">Tipagem estrita, sem \u00edndice impl\u00edcito</td>\n<td style=\"text-align: left;\">Campos expl\u00edcitos do hor\u00e1rio</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">Valores ausentes</td>\n<td style=\"text-align: left;\"><code>null</code> distinto de <code>NaN</code></td>\n<td style=\"text-align: left;\">Distinguir aus\u00eancia e valor num\u00e9rico</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">Express\u00f5es</td>\n<td style=\"text-align: left;\">Opera\u00e7\u00f5es sobre colunas</td>\n<td style=\"text-align: left;\">Filtros e agrega\u00e7\u00f5es por turma ou professor</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">Paralelismo</td>\n<td style=\"text-align: left;\">Muitas opera\u00e7\u00f5es em paralelo</td>\n<td style=\"text-align: left;\">Tratamento de dados maiores</td>\n</tr>\n</tbody>\n</table>\n<span class=\"paragraph\">Estas diferen\u00e7as est\u00e3o descritas no\n<a href=\"https://docs.pola.rs/user-guide/migration/pandas/\" rel=\"noopener noreferrer\" target=\"_blank\">guia oficial de migra\u00e7\u00e3o de pandas para Polars</a>.\nTipagem tabular n\u00e3o substitui a valida\u00e7\u00e3o das regras da escola: essa\nresponsabilidade pertence aos modelos Pydantic e \u00e0s restri\u00e7\u00f5es do solver.</span>\n<span class=\"paragraph\"><strong>Execu\u00e7\u00e3o imediata e diferida.</strong> Polars tamb\u00e9m oferece <code>scan_csv</code> e\n<code>LazyFrame</code>: uma consulta pode ser planeada antes de <code>collect()</code>, com\notimiza\u00e7\u00f5es como antecipar filtros e selecionar apenas as colunas necess\u00e1rias.\n<a href=\"https://docs.pola.rs/user-guide/concepts/lazy-api/\" rel=\"noopener noreferrer\" target=\"_blank\">API lazy de Polars</a>.\nA resolu\u00e7\u00e3o atual usa <code>pl.read_csv(...).to_dicts()</code>, portanto materializa os\ndados imediatamente. N\u00e3o utiliza um pipeline lazy entre os quatro CSV.\nPara ficheiros pequenos que ser\u00e3o integralmente convertidos em objetos\nPydantic, esta op\u00e7\u00e3o mant\u00e9m a leitura simples.</span>\n<span class=\"paragraph\"><strong>Efici\u00eancia e desempenho do Polars</strong>: O Polars, desenvolvido em Rust, foi concebido para processar dados de forma eficiente, recorrendo \u00e0 execu\u00e7\u00e3o paralela em m\u00faltiplas threads e a uma gest\u00e3o otimizada da mem\u00f3ria. Em compara\u00e7\u00e3o, o pandas, implementado em Python com componentes em C e Cython, executa muitas das suas opera\u00e7\u00f5es numa \u00fanica thread e pode apresentar custos adicionais associados \u00e0 execu\u00e7\u00e3o em Python. Estas caracter\u00edsticas permitem ao Polars alcan\u00e7ar, em muitos cen\u00e1rios, tempos de execu\u00e7\u00e3o inferiores e um menor consumo de mem\u00f3ria, sobretudo no processamento de grandes volumes de dados. Contudo, o desempenho relativo depende das opera\u00e7\u00f5es realizadas e das caracter\u00edsticas dos dados.</span>\n<span class=\"paragraph\">A justifica\u00e7\u00e3o mais s\u00f3lida \u00e9, assim, a coer\u00eancia da biblioteca de dados,\na clareza das tabelas e a possibilidade de ampliar o tratamento tabular.\nUma afirma\u00e7\u00e3o de superioridade de desempenho exigiria medi\u00e7\u00f5es com os mesmos\ndados e opera\u00e7\u00f5es nas duas bibliotecas.</span></span>"
+          }
         }
       ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_vblA_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "console": []
     },
     {
       "id": "bkHC",
       "code_hash": "aab9289b3c8e794ee01a3f6897c77a66",
       "outputs": [
         {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "name 'mo' is not defined",
-          "traceback": null
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"3-leitura-dos-csv-validacao-e-separacao-de-responsabilidades-r8\">3. Leitura dos CSV, valida\u00e7\u00e3o e separa\u00e7\u00e3o de responsabilidades \u2014 R8</h2>\n<span class=\"paragraph\"><code>DADOS</code> e <code>DADOS_V2</code> s\u00e3o constru\u00eddos com <code>Path(__file__).parent</code>.\nAssim, os ficheiros s\u00e3o procurados relativamente ao notebook, mesmo quando\neste \u00e9 lan\u00e7ado a partir de outra pasta. Os caminhos identificam os conjuntos\nde entrada; o conte\u00fado escolar \u00e9 lido de cada CSV.</span>\n<span class=\"paragraph\">Em <code>schemas.py</code>, <code>HorarioInstance.from_csv(pasta)</code> define uma fun\u00e7\u00e3o local\n<code>ler(nome)</code>, que l\u00ea o CSV com Polars e converte as linhas em dicion\u00e1rios.\nEssa fun\u00e7\u00e3o evita repetir a l\u00f3gica de leitura para turmas, disciplinas,\nsalas e exce\u00e7\u00f5es. Os dicion\u00e1rios alimentam <code>HorarioInstance</code>, que agrega\nos objetos necess\u00e1rios ao solver.</span>\n<ul>\n<li><code>empty_string_is_null=False</code> preserva strings vazias. Na coluna textual\n  <code>sala_especial</code>, <code>''</code> significa que a disciplina usa uma sala normal;\n  isso corresponde \u00e0 express\u00e3o <code>d.sala_especial or normal</code> em R7.</li>\n<li><code>encoding=\"utf8-lossy\"</code> permite substituir bytes UTF-8 inv\u00e1lidos por um\n  car\u00e1cter de substitui\u00e7\u00e3o. \u00c9 tolerante, mas pode alterar identificadores;\n  uma leitura UTF-8 estrita seria prefer\u00edvel se a prioridade fosse rejeitar\n  qualquer corrup\u00e7\u00e3o dos nomes.</li>\n<li><code>to_dicts()</code> cria a ponte entre a tabela e os modelos Pydantic. \u00c9 pr\u00e1tica\n  nesta escala, embora acrescente objetos Python e consumo de mem\u00f3ria.</li>\n</ul>\n<span class=\"paragraph\">Pydantic valida os campos ao construir os modelos; isto \u00e9 <strong>valida\u00e7\u00e3o em\nexecu\u00e7\u00e3o</strong>, n\u00e3o apenas uma anota\u00e7\u00e3o para um verificador est\u00e1tico.\n<a href=\"https://pydantic.dev/docs/validation/latest/concepts/models/\" rel=\"noopener noreferrer\" target=\"_blank\">Modelos Pydantic</a>.\n<code>Field(ge=0)</code> rejeita cargas e quantidades negativas; <code>Literal</code> restringe\n<code>duplo_periodo</code> a <code>sim</code>/<code>nao</code> e <code>tipo</code> a <code>normal</code>/<code>especial</code>.</span>\n<span class=\"paragraph\">Esta valida\u00e7\u00e3o ainda n\u00e3o cobre todas as rela\u00e7\u00f5es: n\u00e3o garante nomes \u00fanicos,\nrefer\u00eancias de salas existentes, per\u00edodos v\u00e1lidos nas exce\u00e7\u00f5es ou cargas\npares em disciplinas duplas. Os dias e per\u00edodos v\u00eam das constantes do\npacote local, adequadas ao horizonte de cinco dias e cinco tempos do\nenunciado; n\u00e3o s\u00e3o lidos dos CSV.</span>\n<span class=\"paragraph\">Separar os dados do solver permite trocar CSV e testar outras inst\u00e2ncias\nsem reescrever as restri\u00e7\u00f5es. Tamb\u00e9m evita misturar a leitura dos ficheiros\ncom a escolha de onde colocar cada aula.</span></span>"
+          }
         }
       ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_bkHC_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "console": []
     },
     {
       "id": "lEQa",
       "code_hash": "4a1961ef18fe85d79ebb9f288a5be387",
       "outputs": [
         {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "name 'mo' is not defined",
-          "traceback": null
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"4-porque-se-modelou-o-problema-com-cp-sat\">4. Porque se modelou o problema com CP-SAT?</h2>\n<span class=\"paragraph\">Colocar uma aula afeta simultaneamente a turma, o professor, a sala, a carga\nsemanal e, por vezes, o bloco duplo. Escolher cada aula isoladamente pode\nconduzir a um impasse que exige rever escolhas anteriores. Declarar todas\nas restri\u00e7\u00f5es permite ao solver procurar uma combina\u00e7\u00e3o globalmente v\u00e1lida.</span>\n<span class=\"paragraph\">CP-SAT trabalha com vari\u00e1veis inteiras e permite procurar solu\u00e7\u00f5es v\u00e1lidas\nou otimizar um objetivo. As decis\u00f5es bin\u00e1rias e as somas de tempos desta\nresolu\u00e7\u00e3o encaixam nesse dom\u00ednio.\n<a href=\"https://developers.google.com/optimization/cp/cp_solver\" rel=\"noopener noreferrer\" target=\"_blank\">Documenta\u00e7\u00e3o do CP-SAT</a>.\nUm algoritmo guloso ou uma pesquisa manual tamb\u00e9m seriam poss\u00edveis, mas\nobrigariam a implementar o tratamento de conflitos e retrocessos.</span>\n<h3 id=\"variaveis-de-decisao\">Vari\u00e1veis de decis\u00e3o</h3>\n<span class=\"paragraph\">Sejam <marimo-tex class=\"arithmatex\">||(T||)</marimo-tex> as turmas, <marimo-tex class=\"arithmatex\">||(C||)</marimo-tex> as disciplinas, <marimo-tex class=\"arithmatex\">||(D||)</marimo-tex> os dias e <marimo-tex class=\"arithmatex\">||(P||)</marimo-tex> os per\u00edodos.\nDefine-se uma vari\u00e1vel para cada combina\u00e7\u00e3o:</span>\n<marimo-tex class=\"arithmatex\">||[\nx_{t,c,d,p} \\in \\{0,1\\},\\qquad\nx_{t,c,d,p}=1 \\iff \\text{a turma }t\\text{ tem }c\\text{ em }(d,p).\n||]</marimo-tex><span class=\"paragraph\">O dicion\u00e1rio <code>self.x</code> usa <code>(turma, disciplina, dia, periodo)</code> como chave.\nIsto torna os acessos leg\u00edveis e permite reutilizar a mesma representa\u00e7\u00e3o\nnas restri\u00e7\u00f5es, nos hints e na lista de aulas da solu\u00e7\u00e3o. Os nomes das\nvari\u00e1veis ajudam a inspecionar o modelo; a chave do dicion\u00e1rio \u00e9 o que\nidentifica cada decis\u00e3o no c\u00f3digo.</span>\n<span class=\"paragraph\">O n\u00famero inicial de vari\u00e1veis \u00e9 <marimo-tex class=\"arithmatex\">||(|T|\\,|C|\\,|D|\\,|P|||)</marimo-tex>.\nNos dados fornecidos, s\u00e3o <marimo-tex class=\"arithmatex\">||(2\\times6\\times5\\times5=300||)</marimo-tex>, antes das vari\u00e1veis\nauxiliares de O1. N\u00e3o se cria uma dimens\u00e3o para cada sala f\u00edsica:\na capacidade \u00e9 controlada por tipo de sala em R7.</span>\n<h3 id=\"organizacao-da-classe\">Organiza\u00e7\u00e3o da classe</h3>\n<span class=\"paragraph\"><code>__init__</code> guarda a inst\u00e2ncia e a configura\u00e7\u00e3o, cria o <code>CpModel</code>, declara\nas vari\u00e1veis e chama <code>_build_model()</code>. Este m\u00e9todo separa R1\u2013R7 em m\u00e9todos\npequenos, facilitando relacionar o c\u00f3digo com o enunciado.\n<code>CpSolver</code> \u00e9 o motor que resolve esse modelo; n\u00e3o \u00e9 o pr\u00f3prio modelo.</span>\n<span class=\"paragraph\"><strong>Gera\u00e7\u00e3o das combina\u00e7\u00f5es de dias e per\u00edodos:</strong> A fun\u00e7\u00e3o <code>_slots()</code> devolve, em cada chamada, um novo iterador <code>product(dias, periodos)</code>, que representa o produto cartesiano entre os dias e os per\u00edodos, ou seja, todas as combina\u00e7\u00f5es poss\u00edveis entre ambos. Como este iterador se esgota ap\u00f3s ser percorrido integralmente, a cria\u00e7\u00e3o de um novo em cada chamada garante que cada restri\u00e7\u00e3o tem acesso \u00e0 totalidade das combina\u00e7\u00f5es, evitando a reutiliza\u00e7\u00e3o de um iterador j\u00e1 esgotado por uma restri\u00e7\u00e3o anterior.</span></span>"
+          }
         }
       ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_lEQa_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "console": []
     },
     {
       "id": "PKri",
@@ -136,100 +101,65 @@
       "code_hash": "6dc94379d068274f2743758803d2b8bb",
       "outputs": [
         {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "name 'mo' is not defined",
-          "traceback": null
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"5-como-se-traduzem-os-requisitos-em-restricoes\">5. Como se traduzem os requisitos em restri\u00e7\u00f5es?</h2>\n<h3 id=\"r1-uma-turma-nao-pode-ter-duas-aulas-no-mesmo-tempo\">R1 \u2014 uma turma n\u00e3o pode ter duas aulas no mesmo tempo</h3>\n<span class=\"paragraph\">Para cada turma, dia e per\u00edodo:</span>\n<marimo-tex class=\"arithmatex\">||[\\sum_{c\\in C}x_{t,c,d,p}\\leq1.||]</marimo-tex><span class=\"paragraph\"><code>_r1_uma_aula_por_tempo()</code> usa <code>add_at_most_one</code>, que exprime diretamente\nesta cardinalidade sobre vari\u00e1veis booleanas. Permite zero aulas naquele\ntempo: o enunciado n\u00e3o obriga a ocupar todos os per\u00edodos. Usar igualdade\na um obrigaria a preencher a semana, alterando o problema.</span>\n<h3 id=\"r2-cumprir-exatamente-a-carga-semanal\">R2 \u2014 cumprir exatamente a carga semanal</h3>\n<span class=\"paragraph\">Se <marimo-tex class=\"arithmatex\">||(q_c||)</marimo-tex> \u00e9 a carga da disciplina <marimo-tex class=\"arithmatex\">||(c||)</marimo-tex>, para cada turma:</span>\n<marimo-tex class=\"arithmatex\">||[\\sum_{d\\in D}\\sum_{p\\in P}x_{t,c,d,p}=q_c.||]</marimo-tex><span class=\"paragraph\">A igualdade impede tanto aulas em falta como aulas a mais. A carga \u00e9\ncontada em <strong>tempos</strong>, pelo que um bloco duplo contribui com dois.\nNos CSV iniciais, cada turma tem 17 tempos semanais distribu\u00eddos por\n25 posi\u00e7\u00f5es poss\u00edveis; a exist\u00eancia de per\u00edodos livres \u00e9 esperada.</span>\n<span class=\"paragraph\">R1 e R2 complementam-se: a primeira evita sobreposi\u00e7\u00f5es, enquanto a segunda\nobriga a colocar as aulas necess\u00e1rias. Nenhuma delas, isoladamente,\nasseguraria ambas as propriedades.</span></span>"
+          }
         }
       ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_Xref_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "console": []
     },
     {
       "id": "SFPL",
       "code_hash": "fa088ce945a07a3a3f485e586402c4b2",
       "outputs": [
         {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "name 'mo' is not defined",
-          "traceback": null
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"r3-e-r4-distribuicao-diaria-e-blocos-duplos\">R3 e R4 \u2014 distribui\u00e7\u00e3o di\u00e1ria e blocos duplos</h3>\n<span class=\"paragraph\">Para uma disciplina normal, <code>_r3_r4_uma_por_dia_e_duplo_periodo()</code> imp\u00f5e:</span>\n<marimo-tex class=\"arithmatex\">||[\\sum_{p\\in P}x_{t,c,d,p}\\leq1.||]</marimo-tex><span class=\"paragraph\">Isto distribui os tempos semanais por dias diferentes. Para uma disciplina\ndupla, o limite passa a dois tempos por dia. Esse limite, sozinho, ainda\npermitiria um tempo isolado ou dois tempos afastados.</span>\n<span class=\"paragraph\">Para cada per\u00edodo de uma disciplina dupla, acrescenta-se:</span>\n<marimo-tex class=\"arithmatex\">||[\nx_{t,c,d,p}\\leq\n\\sum_{q\\in\\{p-1,p+1\\}\\cap P}x_{t,c,d,q}.\n||]</marimo-tex><span class=\"paragraph\"><strong>Porque funciona esta combina\u00e7\u00e3o?</strong> Se um tempo est\u00e1 ocupado, pelo menos\num vizinho tem de estar ocupado. Logo, um \u00fanico tempo \u00e9 imposs\u00edvel.\nDois tempos n\u00e3o adjacentes tamb\u00e9m s\u00e3o imposs\u00edveis, pois nenhum tem um\nvizinho ocupado. Como o limite di\u00e1rio impede tr\u00eas ou mais tempos,\nrestam exatamente duas possibilidades: nenhuma aula ou um par consecutivo.</span>\n<span class=\"paragraph\"><code>self.x.get(...)</code> devolve <code>None</code> para vizinhos fora do horizonte.\nO teste <code>v is not None</code> exclui esses valores sem tentar converter uma\nvari\u00e1vel simb\u00f3lica do solver num booleano Python. No per\u00edodo 1 s\u00f3 existe\no vizinho 2; no \u00faltimo per\u00edodo s\u00f3 existe o anterior.</span>\n<span class=\"paragraph\">Esta formula\u00e7\u00e3o evita vari\u00e1veis adicionais para o in\u00edcio dos blocos.\nDepende, por\u00e9m, do limite di\u00e1rio de dois: sem ele, a condi\u00e7\u00e3o de vizinhan\u00e7a\ntamb\u00e9m aceitaria sequ\u00eancias de tr\u00eas tempos. Depende ainda de per\u00edodos\nnumerados consecutivamente, como acontece nas constantes atuais.</span>\n<span class=\"paragraph\">Uma carga dupla de quatro tempos exige dois blocos em dias distintos.\nUma carga dupla \u00edmpar torna o modelo invi\u00e1vel, porque cada dia contribui\ncom zero ou dois tempos. O c\u00f3digo deixa essa inviabilidade ao solver;\nn\u00e3o a rejeita previamente em <code>schemas.py</code>.</span></span>"
+          }
         }
       ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_SFPL_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "console": []
     },
     {
       "id": "BYtC",
       "code_hash": "ca36bb15faf8295ec802238bbb75a8d2",
       "outputs": [
         {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "name 'mo' is not defined",
-          "traceback": null
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"r5-ausencia-de-sobreposicoes-de-professores\">R5 \u2014 aus\u00eancia de sobreposi\u00e7\u00f5es de professores</h3>\n<span class=\"paragraph\">Seja <marimo-tex class=\"arithmatex\">||(C_f||)</marimo-tex> o conjunto de disciplinas do professor <marimo-tex class=\"arithmatex\">||(f||)</marimo-tex>. Em cada tempo:</span>\n<marimo-tex class=\"arithmatex\">||[\\sum_{t\\in T}\\sum_{c\\in C_f}x_{t,c,d,p}\\leq1.||]</marimo-tex><span class=\"paragraph\">O m\u00e9todo agrupa <strong>todas</strong> as disciplinas do mesmo professor e percorre\ntodas as turmas. Nos dados iniciais, a Prof. Diana d\u00e1 Hist\u00f3ria e Ingl\u00eas:\ncontrolar cada disciplina separadamente permitiria indevidamente que\ndesse ambas em simult\u00e2neo. O conjunto de nomes elimina professores\nrepetidos na constru\u00e7\u00e3o destas restri\u00e7\u00f5es.</span>\n<h3 id=\"r6-disponibilidade-por-excecoes\">R6 \u2014 disponibilidade por exce\u00e7\u00f5es</h3>\n<span class=\"paragraph\">Por omiss\u00e3o, o professor est\u00e1 dispon\u00edvel. Para cada exce\u00e7\u00e3o <marimo-tex class=\"arithmatex\">||((f,d,p)||)</marimo-tex>,\ntodas as vari\u00e1veis desse professor no tempo indicado ficam a zero:</span>\n<marimo-tex class=\"arithmatex\">||[x_{t,c,d,p}=0\\qquad(t\\in T,\\;c\\in C_f).||]</marimo-tex><span class=\"paragraph\">A representa\u00e7\u00e3o \u00e9 compacta quando h\u00e1 poucas indisponibilidades. O mesmo\nm\u00e9todo trata o novo CSV, sem assumir que s\u00f3 a Prof. Ana pode mudar.\nUma exce\u00e7\u00e3o com dia ou per\u00edodo inexistente pode provocar um erro no acesso\na <code>self.x</code>; validar esse dom\u00ednio antes de construir o modelo seria \u00fatil.</span>\n<h3 id=\"r7-capacidade-dos-tipos-de-sala\">R7 \u2014 capacidade dos tipos de sala</h3>\n<span class=\"paragraph\">O c\u00f3digo identifica a sala normal com <code>next(...)</code>. A express\u00e3o\n<code>d.sala_especial or normal</code> associa cada disciplina ao recurso necess\u00e1rio.\nSe <marimo-tex class=\"arithmatex\">||(C_r||)</marimo-tex> re\u00fane as disciplinas que usam o tipo de sala <marimo-tex class=\"arithmatex\">||(r||)</marimo-tex>:</span>\n<marimo-tex class=\"arithmatex\">||[\\sum_{t\\in T}\\sum_{c\\in C_r}x_{t,c,d,p}\\leq\\operatorname{quantidade}_r.||]</marimo-tex><span class=\"paragraph\">Com um Laborat\u00f3rio, duas aulas que o exigem n\u00e3o podem ocorrer em simult\u00e2neo,\nmesmo com turmas e professores diferentes. A mesma l\u00f3gica controla o Gin\u00e1sio\ne as salas normais, e uma quantidade zero impede o uso desse recurso.</span>\n<span class=\"paragraph\"><strong>Pressupostos.</strong> H\u00e1 um \u00fanico grupo de salas normais, as salas do mesmo\ngrupo s\u00e3o intercambi\u00e1veis e cada aula ocupa uma sala durante um tempo.\nO hor\u00e1rio n\u00e3o atribui n\u00fameros a salas f\u00edsicas. Sob estes pressupostos,\no limite de capacidade permite uma atribui\u00e7\u00e3o de salas em cada tempo.\nSe fosse necess\u00e1rio manter uma sala espec\u00edfica, essa decis\u00e3o teria de ser\nmodelada explicitamente. A indisponibilidade de uma sala num tempo\nespec\u00edfico tamb\u00e9m exigiria dados e restri\u00e7\u00f5es de capacidade por tempo;\no CSV atual representa uma capacidade constante durante toda a semana.</span></span>"
+          }
         }
       ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_BYtC_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "console": []
     },
     {
       "id": "RGSE",
       "code_hash": "0399e00f43d5b8d31f400dafc01d6ab3",
       "outputs": [
         {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "name 'mo' is not defined",
-          "traceback": null
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"6-o1-como-se-minimizam-os-buracos-dos-professores\">6. O1 \u2014 como se minimizam os buracos dos professores?</h2>\n<span class=\"paragraph\">Um buraco \u00e9 um tempo livre <strong>entre</strong> a primeira e a \u00faltima aula do\nprofessor no mesmo dia. Tempos antes da primeira aula e depois da \u00faltima\nn\u00e3o contam. A contagem \u00e9 por professor, agregando as suas turmas e disciplinas.</span>\n<table>\n<thead>\n<tr>\n<th style=\"text-align: left;\">Per\u00edodos com aulas</th>\n<th style=\"text-align: left;\">Buracos</th>\n<th style=\"text-align: left;\">Raz\u00e3o</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: left;\">1, 3, 4</td>\n<td style=\"text-align: left;\">1</td>\n<td style=\"text-align: left;\">O per\u00edodo 2 est\u00e1 entre aulas</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">2, 5</td>\n<td style=\"text-align: left;\">2</td>\n<td style=\"text-align: left;\">Os per\u00edodos 3 e 4 est\u00e3o entre aulas</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">3, 4</td>\n<td style=\"text-align: left;\">0</td>\n<td style=\"text-align: left;\">N\u00e3o se penalizam os per\u00edodos antes e depois</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">Nenhum, ou apenas um</td>\n<td style=\"text-align: left;\">0</td>\n<td style=\"text-align: left;\">N\u00e3o h\u00e1 intervalo livre entre duas aulas</td>\n</tr>\n</tbody>\n</table>\n<h3 id=\"ocupacao-e-propagacao-nos-dois-sentidos\">Ocupa\u00e7\u00e3o e propaga\u00e7\u00e3o nos dois sentidos</h3>\n<span class=\"paragraph\">Para um professor e um dia, <code>busy[k]</code> soma as suas aulas no per\u00edodo <marimo-tex class=\"arithmatex\">||(k||)</marimo-tex>.\nGra\u00e7as a R5, essa soma s\u00f3 pode valer zero ou um, mesmo sendo uma express\u00e3o\nlinear e n\u00e3o uma nova vari\u00e1vel booleana.</span>\n<span class=\"paragraph\"><code>started[k]</code> indica se existe uma aula at\u00e9 esse per\u00edodo; <code>continues[k]</code>\nindica se existe uma aula desse per\u00edodo at\u00e9 ao final do dia:</span>\n<marimo-tex class=\"arithmatex\">||[\ns_k=\\max(b_k,s_{k-1}),\\qquad c_k=\\max(b_k,c_{k+1}).\n||]</marimo-tex><span class=\"paragraph\"><strong>Propaga\u00e7\u00e3o da exist\u00eancia de aulas:</strong> Nos extremos, considera-se apenas <marimo-tex class=\"arithmatex\">||(b_k||)</marimo-tex>. As chamadas a <code>add_max_equality</code> imp\u00f5em estas rela\u00e7\u00f5es independentemente da ordem em que as restri\u00e7\u00f5es s\u00e3o adicionadas. A vari\u00e1vel <code>started</code> indica a exist\u00eancia de pelo menos uma aula desde o in\u00edcio at\u00e9 ao per\u00edodo considerado, enquanto <code>continues</code> indica a exist\u00eancia de pelo menos uma aula desde esse per\u00edodo at\u00e9 ao fim. Estas vari\u00e1veis n\u00e3o indicam necessariamente que o professor esteja a lecionar no per\u00edodo em quest\u00e3o. Embora seja poss\u00edvel formular rela\u00e7\u00f5es equivalentes atrav\u00e9s de restri\u00e7\u00f5es lineares, a utiliza\u00e7\u00e3o de <code>add_max_equality</code> simplifica o c\u00f3digo. A eventual diferen\u00e7a de desempenho entre as duas abordagens dever\u00e1 ser avaliada empiricamente, podendo ser pouco relevante face \u00e0 dimens\u00e3o reduzida do conjunto de dados.</span>\n<h3 id=\"variaveis-de-penalizacao\">Vari\u00e1veis de penaliza\u00e7\u00e3o</h3>\n<span class=\"paragraph\">Para cada per\u00edodo, cria-se <code>gap</code>, uma vari\u00e1vel booleana, com:</span>\n<marimo-tex class=\"arithmatex\">||[g_k\\geq s_k+c_k-1-b_k,\\qquad \\min\\sum_{f,d,k}g_{f,d,k}.||]</marimo-tex><span class=\"paragraph\">Se o tempo est\u00e1 livre e h\u00e1 aulas antes e depois, o lado direito vale um:\n<code>gap</code> \u00e9 obrigatoriamente um. Se h\u00e1 aula, ou se falta uma aula num dos lados,\no lado direito n\u00e3o obriga a penalizar e a minimiza\u00e7\u00e3o favorece zero.\nNos cinco professores, cinco dias e cinco per\u00edodos iniciais, criam-se\n375 vari\u00e1veis auxiliares: <code>started</code>, <code>continues</code> e <code>gap</code> por posi\u00e7\u00e3o.</span>\n<span class=\"paragraph\"><strong>Pormenor de precis\u00e3o.</strong> A desigualdade imp\u00f5e apenas um limite inferior.\nNum \u00f3timo, todos os <code>gap</code> desnecess\u00e1rios valem zero, pois poderiam ser\nreduzidos sem afetar o hor\u00e1rio. Numa solu\u00e7\u00e3o apenas <code>FEASIBLE</code>, o modelo\nn\u00e3o garante essa equival\u00eancia exata para todos os auxiliares. Por isso,\ncontar os buracos a partir das aulas \u00e9 a forma direta de avaliar o hor\u00e1rio\nrealmente devolvido.</span></span>"
+          }
         }
       ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_RGSE_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "console": []
     },
     {
       "id": "Kclp",
       "code_hash": "22ed52a0b424b746bad182aae27a9667",
       "outputs": [
         {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "name 'mo' is not defined",
-          "traceback": null
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"7-horario-inicial-h0-e-interpretacao-da-resolucao\">7. Hor\u00e1rio inicial H0 e interpreta\u00e7\u00e3o da resolu\u00e7\u00e3o</h2>\n<span class=\"paragraph\">A pr\u00f3xima c\u00e9lula l\u00ea <code>dados/</code>, constr\u00f3i R1\u2013R7, acrescenta O1 e resolve.\nOs passos est\u00e3o separados na API para permitir reutilizar o mesmo modelo\nde restri\u00e7\u00f5es com objetivos diferentes. <code>HorarioConfig</code> define, por\nomiss\u00e3o, 30 segundos de limite para cada chamada ao solver.</span>\n<span class=\"paragraph\"><code>solve()</code> configura o limite e o registo da pesquisa, chama o CP-SAT e\nextrai as chaves de <code>self.x</code> cujas vari\u00e1veis valem um. A solu\u00e7\u00e3o guarda\no estado, o tempo do solver e as aulas; n\u00e3o guarda uma tabela nem salas\nf\u00edsicas. A express\u00e3o <code>time_limit or self.config.time_limit</code> usa a\nconfigura\u00e7\u00e3o tamb\u00e9m quando \u00e9 passado zero; n\u00e3o valida limites negativos.</span>\n<table>\n<thead>\n<tr>\n<th style=\"text-align: left;\">Estado</th>\n<th style=\"text-align: left;\">Como interpretar</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: left;\"><code>OPTIMAL</code></td>\n<td style=\"text-align: left;\">Solu\u00e7\u00e3o v\u00e1lida; com objetivo, a otimalidade foi demonstrada</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\"><code>FEASIBLE</code></td>\n<td style=\"text-align: left;\">Solu\u00e7\u00e3o v\u00e1lida, sem prova de otimalidade</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\"><code>INFEASIBLE</code></td>\n<td style=\"text-align: left;\">Foi demonstrado que as restri\u00e7\u00f5es n\u00e3o admitem solu\u00e7\u00e3o</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\"><code>UNKNOWN</code></td>\n<td style=\"text-align: left;\">A execu\u00e7\u00e3o terminou sem uma solu\u00e7\u00e3o nem uma prova de inviabilidade</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\"><code>MODEL_INVALID</code></td>\n<td style=\"text-align: left;\">O modelo foi rejeitado por ser inv\u00e1lido</td>\n</tr>\n</tbody>\n</table>\n<span class=\"paragraph\">Sem objetivo, <code>OPTIMAL</code> n\u00e3o significa que o hor\u00e1rio seja melhor em O1.\nEstes estados seguem a\n<a href=\"https://developers.google.com/optimization/cp/cp_solver\" rel=\"noopener noreferrer\" target=\"_blank\">documenta\u00e7\u00e3o do CP-SAT</a>.</span>\n<span class=\"paragraph\">O c\u00f3digo s\u00f3 extrai aulas nos estados v\u00e1lidos. Nos restantes, devolve uma\nlista vazia: uma tabela vazia n\u00e3o representa um hor\u00e1rio v\u00e1lido com zero\nburacos. As m\u00e9tricas devem ser interpretadas apenas quando existe solu\u00e7\u00e3o.</span>\n<span class=\"paragraph\"><code>pl.DataFrame(..., orient=\"row\")</code> transforma cada tuplo numa linha e\n<code>schema=[...]</code> identifica as quatro colunas. A apresenta\u00e7\u00e3o \u00e9 uma lista\nde aulas ocupadas; os per\u00edodos livres n\u00e3o aparecem como linhas.</span></span>"
+          }
         }
       ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_Kclp_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "console": []
     },
     {
       "id": "emfo",
@@ -238,7 +168,7 @@
         {
           "type": "data",
           "data": {
-            "text/html": "<marimo-ui-element object-id='emfo-0' random-id='7ac4f15f-172d-8c87-ff3a-0f292ba1c42f'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qua&#92;&quot;,&#92;&quot;periodo&#92;&quot;:2},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qui&#92;&quot;,&#92;&quot;periodo&#92;&quot;:4},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Sex&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Seg&#92;&quot;,&#92;&quot;periodo&#92;&quot;:2},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:5},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qua&#92;&quot;,&#92;&quot;periodo&#92;&quot;:4},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Sex&#92;&quot;,&#92;&quot;periodo&#92;&quot;:5},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Ci&#92;&#92;u00eancias&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:1},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Ci&#92;&#92;u00eancias&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qui&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3}]&quot;' data-total-rows='34' data-total-columns='4' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;turma&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;disciplina&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;dia&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;periodo&quot;,[&quot;integer&quot;,&quot;i64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+            "text/html": "<marimo-ui-element object-id='emfo-0' random-id='6b084c68-1a96-5614-d90d-7d0fa239744d'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Seg&#92;&quot;,&#92;&quot;periodo&#92;&quot;:2},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qua&#92;&quot;,&#92;&quot;periodo&#92;&quot;:2},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qui&#92;&quot;,&#92;&quot;periodo&#92;&quot;:4},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Sex&#92;&quot;,&#92;&quot;periodo&#92;&quot;:4},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:2},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qua&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qui&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Sex&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Ci&#92;&#92;u00eancias&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Seg&#92;&quot;,&#92;&quot;periodo&#92;&quot;:4},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Ci&#92;&#92;u00eancias&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qua&#92;&quot;,&#92;&quot;periodo&#92;&quot;:4}]&quot;' data-total-rows='34' data-total-columns='4' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;turma&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;disciplina&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;dia&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;periodo&quot;,[&quot;integer&quot;,&quot;i64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
           }
         }
       ],
@@ -249,32 +179,18 @@
       "code_hash": "fe3b4d1e8dfb1abf2277b0e5434c31d5",
       "outputs": [
         {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "name 'mo' is not defined",
-          "traceback": null
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"8-r9-adaptacao-incremental-de-h0-para-h1\">8. R9 \u2014 adapta\u00e7\u00e3o incremental de H0 para H1</h2>\n<span class=\"paragraph\">Em <code>dados_v2/</code>, a Prof. Ana passa a estar indispon\u00edvel \u00e0 sexta-feira nos\nper\u00edodos 4 e 5. As restantes regras continuam em vigor. Reutilizar H0\ndiretamente poderia violar a nova disponibilidade; gerar um hor\u00e1rio sem\nrefer\u00eancia a H0 poderia alterar muitas aulas que continuam v\u00e1lidas.</span>\n<h3 id=\"duas-componentes-com-funcoes-diferentes\">Duas componentes com fun\u00e7\u00f5es diferentes</h3>\n<span class=\"paragraph\"><strong>Hint.</strong> <code>anteriores = set(h0.aulas)</code> re\u00fane as posi\u00e7\u00f5es ocupadas.\nPara cada vari\u00e1vel do novo modelo, <code>add_hint(v, k in anteriores)</code> sugere\num se a posi\u00e7\u00e3o estava ocupada e zero caso contr\u00e1rio. Isto fornece um\nponto de partida \u00e0 pesquisa; n\u00e3o acrescenta uma obriga\u00e7\u00e3o <code>x[k] == 1</code>.\n<code>repair_hint=True</code> configura uma tentativa de reparar o hint quando j\u00e1\nn\u00e3o satisfaz os novos dados. O solver pode alterar qualquer aula se for\nnecess\u00e1rio para satisfazer as restri\u00e7\u00f5es.</span>\n<span class=\"paragraph\"><strong>Objetivo de estabilidade.</strong> Seja <marimo-tex class=\"arithmatex\">||(A_0||)</marimo-tex> o conjunto das aulas de H0\ncujas chaves tamb\u00e9m existem no novo modelo:</span>\n<marimo-tex class=\"arithmatex\">||[\\min\\sum_{k\\in A_0}(1-x_k).||]</marimo-tex><span class=\"paragraph\">Cada aula preservada contribui com zero; cada posi\u00e7\u00e3o antiga abandonada\ncontribui com um. O hint orienta a pesquisa, enquanto este objetivo\nfavorece explicitamente hor\u00e1rios que conservam mais aulas.</span>\n<span class=\"paragraph\">Com as mesmas turmas, disciplinas e cargas, mover uma aula elimina uma\nposi\u00e7\u00e3o antiga e acrescenta uma nova. Contar s\u00f3 a posi\u00e7\u00e3o perdida evita\ncontar a mesma mudan\u00e7a duas vezes. Para os blocos duplos, a unidade\ncontada continua a ser o <strong>tempo letivo</strong>, n\u00e3o o bloco.</span>\n<span class=\"paragraph\">N\u00e3o se fixam rigidamente as aulas n\u00e3o afetadas: uma indisponibilidade\npode obrigar a desloca\u00e7\u00f5es em cadeia por conflitos de turma, professor\nou sala. Permitir essa reorganiza\u00e7\u00e3o \u00e9 mais flex\u00edvel. Tamb\u00e9m n\u00e3o se\nreutiliza o estado interno da pesquisa anterior: cria-se um novo modelo,\naproveitando a solu\u00e7\u00e3o de H0 como hint e refer\u00eancia do objetivo.</span>\n<h3 id=\"alcance-da-metrica-e-do-objetivo\">Alcance da m\u00e9trica e do objetivo</h3>\n<span class=\"paragraph\"><code>mudancas(h1)</code> calcula <code>len(set(h0.aulas) - set(h1.aulas))</code>.\nMede tempos antigos n\u00e3o preservados, sem identificar individualmente\naulas da mesma disciplina. N\u00e3o mede altera\u00e7\u00f5es de professor quando a\nchave se mant\u00e9m, nem mudan\u00e7as de sala f\u00edsica, que n\u00e3o est\u00e1 na chave.\nAulas de uma turma nova n\u00e3o s\u00e3o penalizadas por n\u00e3o terem posi\u00e7\u00e3o em H0.\nSe uma turma ou disciplina desaparecer, a m\u00e9trica inclui essas aulas\nantigas, mas o objetivo exclui as chaves ausentes do novo modelo:\ns\u00e3o perdas inevit\u00e1veis, sem vari\u00e1vel atual para as preservar.</span>\n<span class=\"paragraph\">H0 otimiza buracos; H1 otimiza altera\u00e7\u00f5es. Chamar <code>minimize_buracos()</code> e\ndepois <code>incremental()</code> no mesmo modelo n\u00e3o combina os objetivos: a \u00faltima\nchamada a <code>minimize</code> substitui a anterior. Esta resolu\u00e7\u00e3o usa solvers\ndistintos, de acordo com o enunciado, que dispensa a otimalidade de O1 em H1.\nUma prioridade adicional aos buracos em H1 exigiria uma otimiza\u00e7\u00e3o\nlexicogr\u00e1fica ou uma fun\u00e7\u00e3o ponderada devidamente justificada.</span>\n<h3 id=\"como-ler-a-comparacao-seguinte\">Como ler a compara\u00e7\u00e3o seguinte</h3>\n<span class=\"paragraph\">O ramo <strong>do zero</strong> procura um hor\u00e1rio v\u00e1lido com os novos dados, sem hint\ne sem objetivo de estabilidade. O ramo <strong>incremental</strong> recebe o hint e\nminimiza altera\u00e7\u00f5es. A compara\u00e7\u00e3o mostra o efeito conjunto dessas duas\nescolhas; n\u00e3o isola o efeito do hint.</span>\n<span class=\"paragraph\">Menos altera\u00e7\u00f5es e menor tempo s\u00e3o propriedades diferentes. O objetivo\nfavorece a primeira; o hint n\u00e3o garante a segunda. Otimizar e provar\notimalidade pode at\u00e9 demorar mais do que encontrar qualquer solu\u00e7\u00e3o v\u00e1lida.\nDevem ser usados os valores efetivamente observados na tabela, incluindo\nos estados, em vez de assumir que o incremental \u00e9 sempre mais r\u00e1pido.</span></span>"
+          }
         }
       ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_Hstk_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "console": []
     },
     {
       "id": "nWHF",
       "code_hash": "61c5f91f291f27a7bcd9aeedeb57caaa",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<marimo-ui-element object-id='nWHF-0' random-id='75628210-ce61-8a59-3330-ceb480099502'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;abordagem&#92;&quot;:&#92;&quot;do zero&#92;&quot;,&#92;&quot;estado&#92;&quot;:&#92;&quot;OPTIMAL&#92;&quot;,&#92;&quot;tempo (s)&#92;&quot;:0.016509936,&#92;&quot;aulas alteradas&#92;&quot;:30},{&#92;&quot;abordagem&#92;&quot;:&#92;&quot;incremental&#92;&quot;,&#92;&quot;estado&#92;&quot;:&#92;&quot;OPTIMAL&#92;&quot;,&#92;&quot;tempo (s)&#92;&quot;:0.010027748000000001,&#92;&quot;aulas alteradas&#92;&quot;:0}]&quot;' data-total-rows='2' data-total-columns='4' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;abordagem&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;estado&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;tempo (s)&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;aulas alteradas&quot;,[&quot;integer&quot;,&quot;i64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -282,32 +198,18 @@
       "code_hash": "660e3a45f02c50f6fefc703850a7a597",
       "outputs": [
         {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "name 'mo' is not defined",
-          "traceback": null
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"horario-adaptado-h1\">Hor\u00e1rio adaptado H1</h3>\n<span class=\"paragraph\">A tabela seguinte apresenta as aulas da solu\u00e7\u00e3o incremental, com os mesmos\ncampos de H0. Para avaliar a adapta\u00e7\u00e3o, importa confirmar que o estado\nanterior \u00e9 <code>OPTIMAL</code> ou <code>FEASIBLE</code> e que as aulas respeitam os novos dados.\nUma quantidade baixa de altera\u00e7\u00f5es s\u00f3 tem significado num hor\u00e1rio v\u00e1lido.</span>\n<span class=\"paragraph\"><code>tempo</code> \u00e9 <code>solver.wall_time</code>, em segundos. N\u00e3o inclui a leitura dos CSV,\na cria\u00e7\u00e3o das vari\u00e1veis, a constru\u00e7\u00e3o das restri\u00e7\u00f5es ou a apresenta\u00e7\u00e3o.\nComo H1 usa um modelo novo, esses custos continuam a existir.\nPara avaliar o fluxo completo seria necess\u00e1rio medir tamb\u00e9m esse intervalo,\npor exemplo com <code>time.perf_counter()</code> antes da leitura e depois de <code>solve()</code>.</span>\n<span class=\"paragraph\">Uma execu\u00e7\u00e3o \u00e9 uma ilustra\u00e7\u00e3o, n\u00e3o um estudo de desempenho. Uma avalia\u00e7\u00e3o\nmais forte repetiria os cen\u00e1rios, compararia medianas e dispers\u00e3o e registaria\nhardware, vers\u00f5es, par\u00e2metros, limites de tempo e estados. Para isolar o\nhint, os dois ramos teriam de usar o mesmo objetivo de estabilidade,\ndiferindo apenas no fornecimento do hint.</span></span>"
+          }
         }
       ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_iLit_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "console": []
     },
     {
       "id": "ZHCJ",
       "code_hash": "55ad96c0cdead8f544e8de1120c85caf",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<marimo-ui-element object-id='ZHCJ-0' random-id='1aee9b21-e1ff-fdea-cc36-f4d5e9186f0b'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qua&#92;&quot;,&#92;&quot;periodo&#92;&quot;:2},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qui&#92;&quot;,&#92;&quot;periodo&#92;&quot;:4},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Matem&#92;&#92;u00e1tica&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Sex&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Seg&#92;&quot;,&#92;&quot;periodo&#92;&quot;:2},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:5},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qua&#92;&quot;,&#92;&quot;periodo&#92;&quot;:4},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Portugu&#92;&#92;u00eas&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Sex&#92;&quot;,&#92;&quot;periodo&#92;&quot;:5},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Ci&#92;&#92;u00eancias&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Ter&#92;&quot;,&#92;&quot;periodo&#92;&quot;:1},{&#92;&quot;turma&#92;&quot;:&#92;&quot;7&#92;&#92;u00baA&#92;&quot;,&#92;&quot;disciplina&#92;&quot;:&#92;&quot;Ci&#92;&#92;u00eancias&#92;&quot;,&#92;&quot;dia&#92;&quot;:&#92;&quot;Qui&#92;&quot;,&#92;&quot;periodo&#92;&quot;:3}]&quot;' data-total-rows='34' data-total-columns='4' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;turma&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;disciplina&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;dia&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;periodo&quot;,[&quot;integer&quot;,&quot;i64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -315,32 +217,18 @@
       "code_hash": "9269cc37556804315990bde99df83620",
       "outputs": [
         {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "name 'mo' is not defined",
-          "traceback": null
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"9-avaliacao-independente-dos-buracos\">9. Avalia\u00e7\u00e3o independente dos buracos</h2>\n<span class=\"paragraph\"><code>contar_buracos(instance, aulas)</code> avalia o hor\u00e1rio concreto, sem consultar\n<code>started</code>, <code>continues</code> ou <code>gap</code>. Primeiro associa cada disciplina ao seu\nprofessor; depois re\u00fane os per\u00edodos por <code>(professor, dia)</code>.</span>\n<span class=\"paragraph\">Para um grupo n\u00e3o vazio de per\u00edodos <marimo-tex class=\"arithmatex\">||(S||)</marimo-tex>, a contribui\u00e7\u00e3o \u00e9:</span>\n<marimo-tex class=\"arithmatex\">||[\\operatorname{buracos}(S)=\\max(S)-\\min(S)+1-|S|.||]</marimo-tex><span class=\"paragraph\">O primeiro termo \u00e9 o n\u00famero de posi\u00e7\u00f5es entre a primeira e a \u00faltima aula,\nincluindo os extremos. Retirar o n\u00famero de per\u00edodos ocupados deixa apenas\nas posi\u00e7\u00f5es livres no interior. Por exemplo, para <marimo-tex class=\"arithmatex\">||(S=\\{2,5\\}||)</marimo-tex>, o intervalo\ntem quatro posi\u00e7\u00f5es e duas aulas: h\u00e1 dois buracos.</span>\n<span class=\"paragraph\">A f\u00f3rmula dispensa ordenar os per\u00edodos ou percorrer os tempos livres.\nUm dia sem aulas n\u00e3o cria um grupo, contribuindo implicitamente com zero;\numa \u00fanica aula produz <marimo-tex class=\"arithmatex\">||(1-1=0||)</marimo-tex>. Somam-se todos os professores e dias.</span>\n<span class=\"paragraph\"><strong>Pressupostos da contagem:</strong> n\u00e3o h\u00e1 sobreposi\u00e7\u00f5es do mesmo professor,\nas aulas n\u00e3o est\u00e3o duplicadas e os per\u00edodos s\u00e3o inteiros consecutivos.\nR5 assegura o primeiro pressuposto para as solu\u00e7\u00f5es do solver. Se a fun\u00e7\u00e3o\nrecebesse aulas arbitr\u00e1rias com per\u00edodos repetidos, <code>len(ps)</code> poderia dar\numa contagem incorreta; a fun\u00e7\u00e3o \u00e9 uma m\u00e9trica, n\u00e3o um validador completo.</span>\n<span class=\"paragraph\">Este c\u00e1lculo \u00e9 independente da formula\u00e7\u00e3o de O1. \u00c9 \u00fatil para comparar\nhor\u00e1rios e verificar se o valor do objetivo corresponde aos buracos reais,\ncom a ressalva sobre auxiliares em solu\u00e7\u00f5es apenas <code>FEASIBLE</code>.</span></span>"
+          }
         }
       ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_ROlb_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "console": []
     },
     {
       "id": "qnkX",
       "code_hash": "6e0685b28cf4341adc1e58f15e85fabd",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -348,32 +236,18 @@
       "code_hash": "9f55f662435f30c6b5f5e6cddff66852",
       "outputs": [
         {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "name 'mo' is not defined",
-          "traceback": null
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"comparacao-de-um-horario-sem-o1-com-h0\">Compara\u00e7\u00e3o de um hor\u00e1rio sem O1 com H0</h3>\n<span class=\"paragraph\">A pr\u00f3xima c\u00e9lula cria outro solver com os dados iniciais, mantendo R1\u2013R7\ne sem acrescentar o objetivo O1. Compara-o com H0 usando a mesma fun\u00e7\u00e3o\n<code>contar_buracos</code> nos dois casos. Assim, a compara\u00e7\u00e3o incide sobre as aulas\nrealmente devolvidas, e n\u00e3o s\u00f3 sobre vari\u00e1veis auxiliares.</span>\n<span class=\"paragraph\">Se H0 tiver estado <code>OPTIMAL</code>, minimiza os buracos neste modelo. Um valor\nzero demonstra que n\u00e3o existe solu\u00e7\u00e3o melhor para O1, pois a contagem\nnunca pode ser negativa num hor\u00e1rio v\u00e1lido. Se tiver estado <code>FEASIBLE</code>,\n\u00e9 necess\u00e1rio observar a contagem: existe uma solu\u00e7\u00e3o, mas n\u00e3o uma prova\ngeral de que seja a melhor. O hor\u00e1rio sem O1 pode, por acaso, j\u00e1 ter poucos\nburacos; o objetivo \u00e9 que orienta explicitamente a pesquisa para os reduzir.</span>\n<span class=\"paragraph\">A c\u00e9lula faz uma execu\u00e7\u00e3o de cada abordagem. Tamb\u00e9m aqui os tempos s\u00e3o\napenas os do solver e as m\u00e9tricas s\u00f3 s\u00e3o interpret\u00e1veis com solu\u00e7\u00f5es v\u00e1lidas.</span></span>"
+          }
         }
       ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_TqIu_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "console": []
     },
     {
       "id": "Vxnm",
       "code_hash": "397879f7bf676224407e1d3d880b25ed",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<marimo-ui-element object-id='Vxnm-0' random-id='41052f2e-15b5-d4fd-3a1b-69a3cfb60ac7'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;abordagem&#92;&quot;:&#92;&quot;sem O1&#92;&quot;,&#92;&quot;estado&#92;&quot;:&#92;&quot;OPTIMAL&#92;&quot;,&#92;&quot;tempo (s)&#92;&quot;:0.023939804000000002,&#92;&quot;buracos&#92;&quot;:5},{&#92;&quot;abordagem&#92;&quot;:&#92;&quot;com O1&#92;&quot;,&#92;&quot;estado&#92;&quot;:&#92;&quot;OPTIMAL&#92;&quot;,&#92;&quot;tempo (s)&#92;&quot;:0.043803196,&#92;&quot;buracos&#92;&quot;:0}]&quot;' data-total-rows='2' data-total-columns='4' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;abordagem&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;estado&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;tempo (s)&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;buracos&quot;,[&quot;integer&quot;,&quot;i64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -381,20 +255,13 @@
       "code_hash": "bd4285996abd8bb02a8f7baf8a40adfe",
       "outputs": [
         {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "name 'mo' is not defined",
-          "traceback": null
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"10-como-se-valida-a-resolucao\">10. Como se valida a resolu\u00e7\u00e3o?</h2>\n<span class=\"paragraph\">Os testes em <code>tests/test_horario_escolar.py</code> e as fun\u00e7\u00f5es de\n<code>tests/conftest.py</code> cobrem as regras por duas vias: verificam hor\u00e1rios\nproduzidos e for\u00e7am casos que deveriam ser imposs\u00edveis.</span>\n<table>\n<thead>\n<tr>\n<th style=\"text-align: left;\">Aspeto</th>\n<th style=\"text-align: left;\">Evid\u00eancia implementada nos testes</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: left;\">Dimens\u00e3o das vari\u00e1veis</td>\n<td style=\"text-align: left;\">N\u00famero de vari\u00e1veis igual ao produto das dimens\u00f5es</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">R1\u2013R7</td>\n<td style=\"text-align: left;\">Verificador independente sobre as aulas da solu\u00e7\u00e3o</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">R1 e R2</td>\n<td style=\"text-align: left;\">Sobreposi\u00e7\u00e3o de uma turma e carga semanal excedida tornam o modelo invi\u00e1vel</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">R3 e R4</td>\n<td style=\"text-align: left;\">Repeti\u00e7\u00e3o di\u00e1ria, tempo duplo isolado e par n\u00e3o consecutivo s\u00e3o rejeitados</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">R5 e R6</td>\n<td style=\"text-align: left;\">Sobreposi\u00e7\u00f5es e indisponibilidades rejeitadas; tempo dispon\u00edvel aceite</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">R7</td>\n<td style=\"text-align: left;\">Falta de capacidade de salas normais e especiais \u00e9 detetada</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">R8 e generaliza\u00e7\u00e3o</td>\n<td style=\"text-align: left;\">Leitura dos CSV e cen\u00e1rio com outra turma, disciplina e exce\u00e7\u00e3o</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">Valida\u00e7\u00e3o de campos</td>\n<td style=\"text-align: left;\">Um valor inv\u00e1lido de <code>duplo_periodo</code> \u00e9 rejeitado</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">R9</td>\n<td style=\"text-align: left;\">H1 \u00e9 v\u00e1lido e, no cen\u00e1rio testado, perde apenas as posi\u00e7\u00f5es antigas agora proibidas</td>\n</tr>\n<tr>\n<td style=\"text-align: left;\">O1</td>\n<td style=\"text-align: left;\">Exemplos de contagem, compara\u00e7\u00e3o de hor\u00e1rios e caso com um buraco for\u00e7ado</td>\n</tr>\n</tbody>\n</table>\n<span class=\"paragraph\"><code>_verificar</code> conta diretamente as aulas por turma, disciplina, professor\ne sala, sem chamar os m\u00e9todos que constru\u00edram as restri\u00e7\u00f5es. Esta\nindepend\u00eancia torna os testes mais \u00fateis para detetar erros de modela\u00e7\u00e3o.\nAs assumptions fixam decis\u00f5es para uma chamada ao solver e s\u00e3o limpas\ndepois, permitindo testar conflitos sem acrescentar fixa\u00e7\u00f5es permanentes.</span>\n<span class=\"paragraph\">O solver da fixture <code>o1</code> \u00e9 separado: <code>minimize_buracos()</code> altera o modelo,\npelo que partilhar esse objeto com testes sem objetivo confundiria os\ncen\u00e1rios. A igualdade entre objetivo e contagem de buracos \u00e9 verificada\nno cen\u00e1rio de teste; devido \u00e0 formula\u00e7\u00e3o dos auxiliares, n\u00e3o deve ser\ngeneralizada a qualquer incumbente apenas <code>FEASIBLE</code>.</span>\n<span class=\"paragraph\">Para executar os testes a partir da raiz do reposit\u00f3rio, com o ambiente\ndo projeto preparado:</span>\n<div class=\"language-bash codehilite\"><pre><span></span><code>uv<span class=\"w\"> </span>run<span class=\"w\"> </span>pytest<span class=\"w\"> </span>tests/test_horario_escolar.py\n</code></pre></div>\n<span class=\"paragraph\">Os testes mostram o comportamento nos casos cobertos. N\u00e3o constituem uma\nprova de viabilidade de qualquer CSV futuro, nem um benchmark de rapidez\nincremental. A fundamenta\u00e7\u00e3o das restri\u00e7\u00f5es e os testes complementam-se.</span></span>"
+          }
         }
       ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"/tmp/marimo_29746/__marimo__cell_DnEU_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">mo</span><span class=\"o\">.</span><span class=\"n\">md</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"\"\"</span>\n<span class=\"w\">    </span><span class=\"pm\">^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'mo' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "console": []
     }
   ]
 }

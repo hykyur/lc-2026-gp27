@@ -12,6 +12,7 @@ dependencies = [
     "ipykernel>=7.4.0",
     "jupyter>=1.1.1",
     "marimo>=0.25.0",
+    "mosek>=11.2.7",
     "ortools>=9.15.6755",
     "polars>=1.44.2",
     "pydantic>=2.13.5",

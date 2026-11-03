@@ -1165,6 +1165,7 @@ dependencies = [
     { name = "ipykernel" },
     { name = "jupyter" },
     { name = "marimo" },
+    { name = "mosek" },
     { name = "ortools" },
     { name = "polars" },
     { name = "pydantic" },
@@ -1186,6 +1187,7 @@ requires-dist = [
     { name = "ipykernel", specifier = ">=7.4.0" },
     { name = "jupyter", specifier = ">=1.1.1" },
     { name = "marimo", specifier = ">=0.25.0" },
+    { name = "mosek", specifier = ">=11.2.7" },
     { name = "ortools", specifier = ">=9.15.6755" },
     { name = "polars", specifier = ">=1.44.2" },
     { name = "pydantic", specifier = ">=2.13.5" },
@@ -1357,6 +1359,20 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/7b/92/328a294a6de83bacb95bed01f04e0eaff4e3616ee359fc821a5dfc539b02/mistune-3.3.4.tar.gz", hash = "sha256:58b5c96d6fcb61190dfe5fae498d2b2065f99cf61e9649418fd54cf1ada86dfe", size = 121426, upload-time = "2026-07-22T05:22:30.89Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/77/e4/288365afae98953bc01de09f686f40d8ee84578135aa7767d5d4e60b5278/mistune-3.3.4-py3-none-any.whl", hash = "sha256:ee015381e955e370962968befe1d729ab60fafb6a715ac6751763fbce38c8d4a", size = 66862, upload-time = "2026-07-22T05:22:29.419Z" },
+]
+
+[[package]]
+name = "mosek"
+version = "11.2.7"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0f/a8/74b5070726644300cceb2c1ec8899e487d9ba4c4af5921e2bda58030a1d8/mosek-11.2.7-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:d8f04e602c1e2b357bfec330358aeb309001dc963a53cfe34235a5b08f97a368", size = 8794356, upload-time = "2026-10-26T07:34:22.334Z" },
+    { url = "https://files.pythonhosted.org/packages/88/f7/c51e91abc87d363d17e732d4be1422051f8db9148b5da1e990829b972f70/mosek-11.2.7-cp39-abi3-manylinux2014_x86_64.whl", hash = "sha256:f028beba4e2ac168d222bd013a1d6966ac0f8f77cf1947e038a47123d2c5f83c", size = 15365655, upload-time = "2026-10-26T07:34:25.46Z" },
+    { url = "https://files.pythonhosted.org/packages/9e/e3/24802f8eb8edcc7425e685d793db4517a927cb32a5706f389d2ea7672ab4/mosek-11.2.7-cp39-abi3-manylinux_2_27_aarch64.whl", hash = "sha256:3420445bb45feace5d164ec08cc8fe7d50f0dfdc8f0ffeac66cc935d9716b3f2", size = 9911511, upload-time = "2026-10-26T07:34:28.045Z" },
+    { url = "https://files.pythonhosted.org/packages/56/a1/28cebb33a2868dfc91c31d59777a4f2d6e59b1e8adbcdf866a6ed97833b7/mosek-11.2.7-cp39-abi3-win_amd64.whl", hash = "sha256:2538aa0f930da0529df4dcc216f3379dd441421599af9940624831218dcd2783", size = 11206255, upload-time = "2026-10-26T07:34:30.57Z" },
 ]
 
 [[package]]
