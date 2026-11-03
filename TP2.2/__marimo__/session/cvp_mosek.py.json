@@ -1,0 +1,142 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.25.0",
+    "script_metadata_hash": null
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "c6295e3641a41ecd6a6487f512905295",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "b4f5410f0fc8d64b94c94c3801ac72d9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"resolucao-de-uma-versao-limitada-do-cvp\">Resolu\u00e7\u00e3o de uma vers\u00e3o limitada do CVP</h1>\n<span class=\"paragraph\">O objetivo \u00e9 encontrar um ponto de um reticulado que esteja o mais pr\u00f3ximo\nposs\u00edvel de um alvo, usando a dist\u00e2ncia euclidiana.</span>\n<span class=\"paragraph\">Neste trabalho, as linhas de uma matriz <marimo-tex class=\"arithmatex\">||(G||)</marimo-tex> s\u00e3o <marimo-tex class=\"arithmatex\">||(k||)</marimo-tex> vetores linearmente\nindependentes, cada um com <marimo-tex class=\"arithmatex\">||(m||)</marimo-tex> componentes geradas uniformemente em <marimo-tex class=\"arithmatex\">||([0,1]||)</marimo-tex>.\nO alvo \u00e9 constru\u00eddo como <marimo-tex class=\"arithmatex\">||(t = G^T u||)</marimo-tex>, com coeficientes reais <marimo-tex class=\"arithmatex\">||(u_i||)</marimo-tex> uniformes\nem <marimo-tex class=\"arithmatex\">||([0,\\ell]||)</marimo-tex>.</span>\n<span class=\"paragraph\">Procuram-se coeficientes <strong>inteiros</strong> <marimo-tex class=\"arithmatex\">||(z_i||)</marimo-tex>, entre <marimo-tex class=\"arithmatex\">||(0||)</marimo-tex> e <marimo-tex class=\"arithmatex\">||(\\ell||)</marimo-tex>, para formar\no ponto <marimo-tex class=\"arithmatex\">||(x = G^T z||)</marimo-tex> mais pr\u00f3ximo de <marimo-tex class=\"arithmatex\">||(t||)</marimo-tex>.</span>\n<ul>\n<li><strong>k</strong>: n\u00famero de vetores da base e de coeficientes inteiros a escolher.</li>\n<li><strong>m = 2k</strong>: n\u00famero de componentes de cada vetor.</li>\n<li><strong>ell</strong>: limite superior dos coeficientes inteiros.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "82b1f675f96f91ded85ae90c6b1b13ba",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"porque-usei-mosek-em-vez-de-clarabel\">Porque usei MOSEK em vez de Clarabel</h2>\n<span class=\"paragraph\">O problema tem duas caracter\u00edsticas: uma restri\u00e7\u00e3o c\u00f3nica para representar\na dist\u00e2ncia e vari\u00e1veis inteiras para representar os coeficientes do reticulado.</span>\n<span class=\"paragraph\">O <strong>MOSEK suporta ambas diretamente</strong>, atrav\u00e9s do CVXPY. O <strong>Clarabel resolve\nproblemas c\u00f3nicos cont\u00ednuos</strong>, mas n\u00e3o trata diretamente vari\u00e1veis inteiras.\nPara o usar neste exerc\u00edcio, seria necess\u00e1rio implementar tamb\u00e9m um m\u00e9todo\nde pesquisa inteira, como <em>branch-and-bound</em>.</span>\n<span class=\"paragraph\">A escolha do MOSEK permite manter o c\u00f3digo simples e resolver a formula\u00e7\u00e3o\ninteira do enunciado. Requer uma licen\u00e7a v\u00e1lida, por exemplo acad\u00e9mica.</span>\n<span class=\"paragraph\">Retirar a integralidade n\u00e3o resolve o exerc\u00edcio: nesse caso, <marimo-tex class=\"arithmatex\">||(z=u||)</marimo-tex> daria\ndist\u00e2ncia zero. Arredondar <marimo-tex class=\"arithmatex\">||(u||)</marimo-tex> tamb\u00e9m n\u00e3o garante a melhor solu\u00e7\u00e3o inteira.</span>\n<span class=\"paragraph\">Fontes: <a href=\"https://www.cvxpy.org/tutorial/solvers/\" rel=\"noopener noreferrer\" target=\"_blank\">solvers do CVXPY</a>\ne <a href=\"https://docs.mosek.com/latest/pythonapi/mip-optimizer.html\" rel=\"noopener noreferrer\" target=\"_blank\">otimiza\u00e7\u00e3o inteira no MOSEK</a>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "cf12efd3d7d50676562cbccb46f19902",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"formulacao-matematica\">Formula\u00e7\u00e3o matem\u00e1tica</h2>\n<span class=\"paragraph\">Introduz-se uma vari\u00e1vel <marimo-tex class=\"arithmatex\">||(r||)</marimo-tex> que limita superiormente a dist\u00e2ncia ao alvo:</span>\n<marimo-tex class=\"arithmatex\">||[\n\\begin{aligned}\n\\min_{z,r}\\quad &amp; r \\\\\n\\text{sujeito a}\\quad &amp; \\|G^Tz-t\\|_2 \\leq r,\\\\\n&amp; z\\in\\mathbb{Z}^k,\\quad 0\\leq z_i\\leq\\ell,\\quad r\\geq0.\n\\end{aligned}\n||]</marimo-tex><span class=\"paragraph\">Em CVXPY, a restri\u00e7\u00e3o da dist\u00e2ncia escreve-se com um cone de segunda ordem:</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"n\">z</span> <span class=\"o\">=</span> <span class=\"n\">cp</span><span class=\"o\">.</span><span class=\"n\">Variable</span><span class=\"p\">(</span><span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"n\">integer</span><span class=\"o\">=</span><span class=\"kc\">True</span><span class=\"p\">)</span>\n<span class=\"n\">r</span> <span class=\"o\">=</span> <span class=\"n\">cp</span><span class=\"o\">.</span><span class=\"n\">Variable</span><span class=\"p\">(</span><span class=\"n\">nonneg</span><span class=\"o\">=</span><span class=\"kc\">True</span><span class=\"p\">)</span>\n<span class=\"n\">restricoes</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"n\">cp</span><span class=\"o\">.</span><span class=\"n\">SOC</span><span class=\"p\">(</span><span class=\"n\">r</span><span class=\"p\">,</span> <span class=\"n\">G</span><span class=\"o\">.</span><span class=\"n\">T</span> <span class=\"o\">@</span> <span class=\"n\">z</span> <span class=\"o\">-</span> <span class=\"n\">t</span><span class=\"p\">),</span> <span class=\"n\">z</span> <span class=\"o\">&gt;=</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">z</span> <span class=\"o\">&lt;=</span> <span class=\"n\">ell</span><span class=\"p\">]</span>\n<span class=\"n\">problema</span> <span class=\"o\">=</span> <span class=\"n\">cp</span><span class=\"o\">.</span><span class=\"n\">Problem</span><span class=\"p\">(</span><span class=\"n\">cp</span><span class=\"o\">.</span><span class=\"n\">Minimize</span><span class=\"p\">(</span><span class=\"n\">r</span><span class=\"p\">),</span> <span class=\"n\">restricoes</span><span class=\"p\">)</span>\n<span class=\"n\">problema</span><span class=\"o\">.</span><span class=\"n\">solve</span><span class=\"p\">(</span><span class=\"n\">solver</span><span class=\"o\">=</span><span class=\"n\">cp</span><span class=\"o\">.</span><span class=\"n\">MOSEK</span><span class=\"p\">)</span>\n</code></pre></div></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "07b7fc71c5f4aae1eddb2db3fee67437",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"codigo-do-trabalho\">C\u00f3digo do trabalho</h2>\n<span class=\"paragraph\">Todo o c\u00f3digo est\u00e1 neste documento. As fun\u00e7\u00f5es seguintes geram os dados,\nverificam a solu\u00e7\u00e3o e permitem confirmar os casos pequenos por pesquisa\nexaustiva. A constru\u00e7\u00e3o e a resolu\u00e7\u00e3o do modelo aparecem depois dos controlos.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "7351064917a6a5fba7d0f798c8fdf089",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "006a73f83e21ed2f608e0371e930d3b4",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "34b2c43f3dcbe367e7f9ab9d2765e030",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "b3a972c0d7a5e1e6b1c30c71cee8be85",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"experimentar-outros-valores\">Experimentar outros valores</h2>\n<span class=\"paragraph\">Escolhe <strong>k</strong> e <strong>ell</strong> e carrega em <strong>Resolver</strong>. A semente fica em 42 para\npermitir repetir a mesma experi\u00eancia. O caso k=5 \u00e9 uma valida\u00e7\u00e3o pequena;\nos valores do enunciado s\u00e3o 30, 40 e 50 e podem demorar v\u00e1rios minutos.</span>\n<span class=\"paragraph\">O resultado s\u00f3 \u00e9 atualizado depois de carregares no bot\u00e3o e de a resolu\u00e7\u00e3o terminar.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "102cccf1ca6f344da6bb935f70a33246",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "58a8bb28014e38e217cf0f871a22afb1",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "aa53d3439b315052aa314e655bc8b3ee",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "6df0b0c2d645edc64973dc52e3b3f1c1",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "e9d2d3d90f449277b83e5c1ac4baa551",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"como-interpretar-os-resultados\">Como interpretar os resultados</h2>\n<span class=\"paragraph\">A dist\u00e2ncia apresentada \u00e9 calculada novamente com <code>G.T @ z_inteiro - t</code>.\nAntes de mostrar o resultado, o programa verifica a integralidade, os limites\ne a restri\u00e7\u00e3o c\u00f3nica, incluindo a solu\u00e7\u00e3o depois do arredondamento.</span>\n<span class=\"paragraph\">O tempo inclui prepara\u00e7\u00e3o, compila\u00e7\u00e3o do CVXPY, resolu\u00e7\u00e3o e recupera\u00e7\u00e3o do\nresultado. N\u00e3o inclui gera\u00e7\u00e3o dos dados nem pesquisa exaustiva. As toler\u00e2ncias\nde optimalidade do MOSEK mant\u00eam os valores por defeito.</span>\n<span class=\"paragraph\">Com a mesma semente e k fixo, mudar ell mant\u00e9m G mas escala u e o alvo t.\nPor isso, um ell maior n\u00e3o implica necessariamente mais tempo. Ao mudar k,\ntamb\u00e9m muda m e a inst\u00e2ncia gerada. O n\u00famero de combina\u00e7\u00f5es \u00e9 <marimo-tex class=\"arithmatex\">||((\\ell+1)^k||)</marimo-tex>,\nmas o solver n\u00e3o precisa de as enumerar todas.</span>\n<span class=\"paragraph\">Para <strong>k=5, ell=1</strong>, a refer\u00eancia \u00e9 <code>z = [0, 0, 1, 0, 1]</code>, com dist\u00e2ncia\naproximadamente <strong>0,7729431198</strong>, confirmada pelas 32 combina\u00e7\u00f5es.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}

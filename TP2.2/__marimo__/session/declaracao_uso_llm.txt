@@ -1,0 +1,5 @@
+Declaração de utilização de LLM
+
+Utilizei um modelo de linguagem de grande dimensão (LLM) como ferramenta de apoio à criação do documento Marimo, incluindo a organização e a apresentação dos conteúdos.
+
+Utilizei também o LLM para ajudar a identificar e tratar possíveis exceções e erros nas validações, procurando contemplar casos limite e situações que pudessem comprometer o funcionamento do programa.
