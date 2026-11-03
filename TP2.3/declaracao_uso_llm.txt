@@ -1,0 +1,7 @@
+Declaração de utilização de LLM — TP2.3
+
+Utilizei um modelo de linguagem de grande dimensão (LLM) como ferramenta de apoio à criação do documento Marimo, incluindo a organização e a apresentação dos conteúdos.
+
+Utilizei também o LLM para obter apoio na forma de resolver os casos específicos das transições T6 e T8, cujas consultas diretas envolviam produtos simbólicos difíceis de resolver. Esse apoio incidiu na abordagem de verificação por composição: provar separadamente as relações entre o estado atual e o estado seguinte e as identidades algébricas que justificam a preservação do invariante.
+
+Esta abordagem permite tratar esses casos através de obrigações verificadas pelo solver, sem substituir as verificações por mensagens de sucesso.

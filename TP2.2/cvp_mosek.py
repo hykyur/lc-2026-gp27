@@ -317,8 +317,7 @@ def _(mo):
     também muda m e a instância gerada. O número de combinações é $(\ell+1)^k$,
     mas o solver não precisa de as enumerar todas.
 
-    Para **k=5, ell=1**, a referência é `z = [0, 0, 1, 0, 1]`, com distância
-    aproximadamente **0,7729431198**, confirmada pelas 32 combinações.
+    
     """)
     return
 
