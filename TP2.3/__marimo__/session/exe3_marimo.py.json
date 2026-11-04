@@ -1,0 +1,145 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.25.0",
+    "script_metadata_hash": null
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "98536ebae51e3396df4a4e632a811cf9",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "856317b9a94935252adb0c348af64b64",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"exercicio-3-verificacao-formal-de-uma-multiplicacao\">Exerc\u00edcio 3 \u2014 Verifica\u00e7\u00e3o formal de uma multiplica\u00e7\u00e3o</h1>\n<span class=\"paragraph\">Este documento explica o trabalho implementado em <strong>exe3.py</strong>, apresenta o modelo\nformal e analisa as obriga\u00e7\u00f5es verificadas pelo Z3. O programa n\u00e3o se limita a\ncalcular produtos: procura contraexemplos \u00e0s propriedades do algoritmo.</span>\n<span class=\"paragraph\">O trabalho foi dividido em quatro partes: <strong>A)</strong> constru\u00e7\u00e3o do sistema de transi\u00e7\u00e3o,\n<strong>B)</strong> invariante, <strong>C)</strong> seguran\u00e7a e <strong>D)</strong> termina\u00e7\u00e3o. Os testes principais usam\npalavras de 8 e 16 bits, interpretadas como valores <strong>sem sinal</strong>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "17b1b8790559c4066bffeb361d2f6a99",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"porque-escolhemos-a-biblioteca-z3\">Porque escolhemos a biblioteca Z3</h2>\n<span class=\"paragraph\"><strong>Uma das raz\u00f5es da escolha foi o Z3 ter sido referenciado para realizar o trabalho.</strong>\nSeguimos essa indica\u00e7\u00e3o e us\u00e1mos a interface Python, Z3Py, para escrever o modelo\ne executar as verifica\u00e7\u00f5es no mesmo ambiente do c\u00f3digo.</span>\n<span class=\"paragraph\">O Z3 \u00e9 um solver SMT: verifica se um conjunto de f\u00f3rmulas l\u00f3gicas tem solu\u00e7\u00e3o,\ncombinando l\u00f3gica com teorias como inteiros e vetores de bits. Estas capacidades\najustam-se ao exerc\u00edcio pelas seguintes raz\u00f5es:</span>\n<ul>\n<li><strong>Representa\u00e7\u00e3o da aritm\u00e9tica de m\u00e1quina:</strong> <code>BitVec</code> permite modelar palavras\n  de <code>n</code> bits e o comportamento modular, incluindo o overflow. <code>Extract</code>, <code>LShR</code>,\n  <code>ULT</code> e <code>ZeroExt</code> representam as opera\u00e7\u00f5es espec\u00edficas usadas na implementa\u00e7\u00e3o.</li>\n<li><strong>Modela\u00e7\u00e3o do controlo:</strong> <code>Int</code>, <code>And</code>, <code>Or</code> e <code>Implies</code> permitem descrever\n  o contador de programa, as guardas, as transi\u00e7\u00f5es e os invariantes.</li>\n<li><strong>Procura simb\u00f3lica de contraexemplos:</strong> escrevemos as hip\u00f3teses e a nega\u00e7\u00e3o\n  da propriedade. <code>Solver.check()</code> determina se essa combina\u00e7\u00e3o \u00e9 poss\u00edvel.\n  Assim, verificamos as obriga\u00e7\u00f5es para os valores abrangidos pelas f\u00f3rmulas.</li>\n<li><strong>An\u00e1lise das respostas:</strong> <code>sat</code> permite obter um contraexemplo com <code>model()</code>;\n  <code>unsat</code> conclui a obriga\u00e7\u00e3o; <code>unknown</code> exige tratar a prova como inconclusiva.\n  O timeout permite limitar o tempo de cada consulta.</li>\n</ul>\n<span class=\"paragraph\">Por exemplo, <code>Init \u2227 \u00acR</code> pergunta se existe um estado inicial que viole o\ninvariante. Uma resposta <code>unsat</code> prova a base da indu\u00e7\u00e3o. O mesmo princ\u00edpio\naplica-se \u00e0 preserva\u00e7\u00e3o pelas transi\u00e7\u00f5es e \u00e0 descida do ranking de termina\u00e7\u00e3o.\nAs f\u00f3rmulas e as hip\u00f3teses s\u00e3o definidas por n\u00f3s; o Z3 verifica as consultas.</span>\n<span class=\"paragraph\">As opera\u00e7\u00f5es e a utiliza\u00e7\u00e3o da interface est\u00e3o documentadas no\n<a href=\"https://microsoft.github.io/z3guide/programming/Z3%20Python/Introduction/\" rel=\"noopener noreferrer\" target=\"_blank\">guia oficial de Z3Py</a>\ne no <a href=\"https://microsoft.github.io/z3guide/docs/theories/Bitvectors/\" rel=\"noopener noreferrer\" target=\"_blank\">guia de bit-vectors</a>.</span>\n<span class=\"paragraph\">A seguir, cada explica\u00e7\u00e3o \u00e9 acompanhada pelo bloco de c\u00f3digo correspondente,\npela ordem da implementa\u00e7\u00e3o. Todo o c\u00f3digo est\u00e1 inclu\u00eddo neste ficheiro Marimo\ne \u00e9 apresentado tamb\u00e9m em modo apresenta\u00e7\u00e3o.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "497350d2764052264b7ce7abad2756ed",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "f456ef150524af956dad84201ac4329d",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "97b98c2e2dd98d663cdceda03e4c21c4",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "acbae06791474dc8f0fec6cca15679b7",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "1e09a9685d027510e8368822413456e3",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "f7f0e927770b856a800677f57ef3cc25",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "128748f643553bb7350949b65ed79229",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "526c3dab82b703ef9e8796039761a63e",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "5ebea80b62e40e761f7443d0026b2b06",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "aaa28296f6f6c63227efcef7de5c314c",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "89a0b054542de44d98834acf0d851f6d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"executar-e-consultar-os-testes\">Executar e consultar os testes</h2>\n<span class=\"paragraph\">O bot\u00e3o executa a fun\u00e7\u00e3o <code>verificar</code> inclu\u00edda neste documento, apresentada nos blocos anteriores.\nN\u00e3o \u00e9 necess\u00e1rio ter o ficheiro <code>exe3.py</code> ao lado para executar as provas.\nO limite de tempo aplica-se a <strong>cada consulta</strong>, n\u00e3o ao conjunto completo.\nLarguras maiores podem demorar mais ou produzir <code>unknown</code>.</span>\n<ul>\n<li><strong>unsat</strong>: n\u00e3o existe contraexemplo \u00e0 obriga\u00e7\u00e3o consultada; a obriga\u00e7\u00e3o foi provada.</li>\n<li><strong>sat</strong>: existe contraexemplo; o programa mostra o modelo do Z3.</li>\n<li><strong>unknown</strong>: a prova foi inconclusiva; o programa mostra a raz\u00e3o, por exemplo timeout.</li>\n</ul>\n<span class=\"paragraph\">A fun\u00e7\u00e3o s\u00f3 devolve <code>True</code> se todas as obriga\u00e7\u00f5es resultarem em <code>unsat</code>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "a1f2baab1960360090bfa4c9317dfed8",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "fb14173286ea2db3a3fda6d1a6a130e6",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "3989ae2a4a89c5f0a0a4cc63de0abdd3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"analise-dos-resultados-de-referencia\">An\u00e1lise dos resultados de refer\u00eancia</h2>\n<span class=\"paragraph\">A execu\u00e7\u00e3o de <code>exe3.py</code>, em 3 de novembro de 2026, com timeout de 10000 ms por\nconsulta, concluiu com sucesso para as duas larguras. A sa\u00edda integral est\u00e1 em\n<code>resultados/exe3_testes.txt</code>.</span>\n<table>\n<thead>\n<tr>\n<th>Grupo</th>\n<th style=\"text-align: right;\">Obriga\u00e7\u00f5es por largura</th>\n<th>n=8</th>\n<th>n=16</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Invariante: base, transi\u00e7\u00f5es e composi\u00e7\u00e3o</td>\n<td style=\"text-align: right;\">13</td>\n<td>Todas unsat</td>\n<td>Todas unsat</td>\n</tr>\n<tr>\n<td>Seguran\u00e7a: base, transi\u00e7\u00f5es, composi\u00e7\u00e3o e exclus\u00e3o de erro</td>\n<td style=\"text-align: right;\">14</td>\n<td>Todas unsat</td>\n<td>Todas unsat</td>\n</tr>\n<tr>\n<td>Termina\u00e7\u00e3o: controlo e ranking</td>\n<td style=\"text-align: right;\">4</td>\n<td>Todas unsat</td>\n<td>Todas unsat</td>\n</tr>\n<tr>\n<td><strong>Total</strong></td>\n<td style=\"text-align: right;\"><strong>31</strong></td>\n<td><strong>31 unsat</strong></td>\n<td><strong>31 unsat</strong></td>\n</tr>\n</tbody>\n</table>\n<span class=\"paragraph\">Foram provadas <strong>62 obriga\u00e7\u00f5es</strong> no total. N\u00e3o houve <code>sat</code> nem <code>unknown</code>.\nO sucesso significa que as f\u00f3rmulas consultadas n\u00e3o admitem contraexemplos.\nN\u00e3o corresponde apenas a experimentar alguns pares de entradas: as vari\u00e1veis s\u00e3o\nsimb\u00f3licas e abrangem os valores permitidos pelas hip\u00f3teses de cada consulta.</span>\n<span class=\"paragraph\">A seguran\u00e7a e o resultado exato aplicam-se \u00e0s entradas limitadas indicadas na al\u00ednea C.\nO invariante modular e a termina\u00e7\u00e3o at\u00e9 um estado terminal t\u00eam hip\u00f3teses mais gerais.\nCada chamada prova apenas a largura escolhida: estes resultados n\u00e3o constituem uma\nprova \u00fanica para todos os valores poss\u00edveis de <code>n</code>. A composi\u00e7\u00e3o de T6 e T8 e a\ncobertura das guardas devem ser consideradas juntamente com as respostas do solver.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "a0e334cba1501bd00f0db9058f039350",
+      "outputs": [],
+      "console": []
+    }
+  ]
+}

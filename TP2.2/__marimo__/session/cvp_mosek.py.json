@@ -8,14 +8,7 @@
     {
       "id": "Hbol",
       "code_hash": "c6295e3641a41ecd6a6487f512905295",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -127,12 +120,12 @@
     },
     {
       "id": "nWHF",
-      "code_hash": "e9d2d3d90f449277b83e5c1ac4baa551",
+      "code_hash": "b62bc465c082249bd134de4de84a3236",
       "outputs": [
         {
           "type": "data",
           "data": {
-            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"como-interpretar-os-resultados\">Como interpretar os resultados</h2>\n<span class=\"paragraph\">A dist\u00e2ncia apresentada \u00e9 calculada novamente com <code>G.T @ z_inteiro - t</code>.\nAntes de mostrar o resultado, o programa verifica a integralidade, os limites\ne a restri\u00e7\u00e3o c\u00f3nica, incluindo a solu\u00e7\u00e3o depois do arredondamento.</span>\n<span class=\"paragraph\">O tempo inclui prepara\u00e7\u00e3o, compila\u00e7\u00e3o do CVXPY, resolu\u00e7\u00e3o e recupera\u00e7\u00e3o do\nresultado. N\u00e3o inclui gera\u00e7\u00e3o dos dados nem pesquisa exaustiva. As toler\u00e2ncias\nde optimalidade do MOSEK mant\u00eam os valores por defeito.</span>\n<span class=\"paragraph\">Com a mesma semente e k fixo, mudar ell mant\u00e9m G mas escala u e o alvo t.\nPor isso, um ell maior n\u00e3o implica necessariamente mais tempo. Ao mudar k,\ntamb\u00e9m muda m e a inst\u00e2ncia gerada. O n\u00famero de combina\u00e7\u00f5es \u00e9 <marimo-tex class=\"arithmatex\">||((\\ell+1)^k||)</marimo-tex>,\nmas o solver n\u00e3o precisa de as enumerar todas.</span>\n<span class=\"paragraph\">Para <strong>k=5, ell=1</strong>, a refer\u00eancia \u00e9 <code>z = [0, 0, 1, 0, 1]</code>, com dist\u00e2ncia\naproximadamente <strong>0,7729431198</strong>, confirmada pelas 32 combina\u00e7\u00f5es.</span></span>"
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"como-interpretar-os-resultados\">Como interpretar os resultados</h2>\n<span class=\"paragraph\">A dist\u00e2ncia apresentada \u00e9 calculada novamente com <code>G.T @ z_inteiro - t</code>.\nAntes de mostrar o resultado, o programa verifica a integralidade, os limites\ne a restri\u00e7\u00e3o c\u00f3nica, incluindo a solu\u00e7\u00e3o depois do arredondamento.</span>\n<span class=\"paragraph\">O tempo inclui prepara\u00e7\u00e3o, compila\u00e7\u00e3o do CVXPY, resolu\u00e7\u00e3o e recupera\u00e7\u00e3o do\nresultado. N\u00e3o inclui gera\u00e7\u00e3o dos dados nem pesquisa exaustiva. As toler\u00e2ncias\nde optimalidade do MOSEK mant\u00eam os valores por defeito.</span>\n<span class=\"paragraph\">Com a mesma semente e k fixo, mudar ell mant\u00e9m G mas escala u e o alvo t.\nPor isso, um ell maior n\u00e3o implica necessariamente mais tempo. Ao mudar k,\ntamb\u00e9m muda m e a inst\u00e2ncia gerada. O n\u00famero de combina\u00e7\u00f5es \u00e9 <marimo-tex class=\"arithmatex\">||((\\ell+1)^k||)</marimo-tex>,\nmas o solver n\u00e3o precisa de as enumerar todas.</span></span>"
           }
         }
       ],

@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.25.2"
+__generated_with = "0.25.0"
 app = marimo.App(width="medium", app_title="Exercício 3 — Verificação formal")
 
 
@@ -13,6 +13,7 @@ def _():
     import time
     import inspect
     import textwrap
+
     return Path, contextlib, inspect, io, mo, textwrap, time
 
 
@@ -73,207 +74,205 @@ def _(mo):
     return
 
 
-@app.cell
-def _():
-    def verificar(n, timeout_ms=10000):
-        from z3 import (And, BV2Int, BitVec, BitVecVal, BitVecs, Extract, If, Implies, Int, LShR, Not, Or, Solver, ULT, ZeroExt, sat, simplify, unknown, unsat)
+@app.function
+def verificar(n, timeout_ms=10000):
+    from z3 import (And, BV2Int, BitVec, BitVecVal, BitVecs, Extract, If, Implies, Int, LShR, Not, Or, Solver, ULT, ZeroExt, sat, simplify, unknown, unsat)
 
-        # A implementação considera larguras positivas e pares.
-        if n <= 0 or n % 2 != 0:
-            raise ValueError("n deve ser positivo e par")
+    # A implementação considera larguras positivas e pares.
+    if n <= 0 or n % 2 != 0:
+        raise ValueError("n deve ser positivo e par")
 
-        resultados = []
+    resultados = []
 
-        def provar(nome, *formulas):
-            # Cada consulta procura um contraexemplo à obrigação indicada.
-            s = Solver()
-            s.set(timeout=timeout_ms)
-            s.add(*(simplify(f, som=True) for f in formulas))
-            resultado = s.check()
-            resultados.append(resultado == unsat)
-            print(f"{nome}: {resultado}")
-            if resultado == sat:
-                print("  Contraexemplo:", s.model())
-            elif resultado == unknown:
-                print("  Prova inconclusiva:", s.reason_unknown())
-            return resultado == unsat
+    def provar(nome, *formulas):
+        # Cada consulta procura um contraexemplo à obrigação indicada.
+        s = Solver()
+        s.set(timeout=timeout_ms)
+        s.add(*(simplify(f, som=True) for f in formulas))
+        resultado = s.check()
+        resultados.append(resultado == unsat)
+        print(f"{nome}: {resultado}")
+        if resultado == sat:
+            print("  Contraexemplo:", s.model())
+        elif resultado == unknown:
+            print("  Prova inconclusiva:", s.reason_unknown())
+        return resultado == unsat
 
-        print(f"\n========== TESTES PARA n = {n} ==========")
+    print(f"\n========== TESTES PARA n = {n} ==========")
 
-        # ALINEA A - CONSTRUCAO DO SFOTS
+    # ALINEA A - CONSTRUCAO DO SFOTS
 
-        # Estado atual
-        a = BitVec(f'a_{n}', n)
-        b = BitVec(f'b_{n}', n)
-        x = BitVec(f'x_{n}', n)
-        y = BitVec(f'y_{n}', n)
-        z = BitVec(f'z_{n}', n)
-        pc = Int(f'pc_{n}')
+    # Estado atual
+    a = BitVec(f'a_{n}', n)
+    b = BitVec(f'b_{n}', n)
+    x = BitVec(f'x_{n}', n)
+    y = BitVec(f'y_{n}', n)
+    z = BitVec(f'z_{n}', n)
+    pc = Int(f'pc_{n}')
 
-        # Estado seguinte
-        a1 = BitVec(f'a1_{n}', n)
-        b1 = BitVec(f'b1_{n}', n)
-        x1 = BitVec(f'x1_{n}', n)
-        y1 = BitVec(f'y1_{n}', n)
-        z1 = BitVec(f'z1_{n}', n)
-        pc1 = Int(f'pc1_{n}')
+    # Estado seguinte
+    a1 = BitVec(f'a1_{n}', n)
+    b1 = BitVec(f'b1_{n}', n)
+    x1 = BitVec(f'x1_{n}', n)
+    y1 = BitVec(f'y1_{n}', n)
+    z1 = BitVec(f'z1_{n}', n)
+    pc1 = Int(f'pc1_{n}')
 
-        # pc: 1 entrada; 2 teste; 3 deslocamento; 4 soma;
-        #     5 erro de deslocamento; 6 final; 7 erro de soma.
-        # Mantém-se o caso zero: o modelo cobre também entradas não negativas.
-        Init = And(pc == 1, x == a, y == b, z == BitVecVal(0, n))
+    # pc: 1 entrada; 2 teste; 3 deslocamento; 4 soma;
+    #     5 erro de deslocamento; 6 final; 7 erro de soma.
+    # Mantém-se o caso zero: o modelo cobre também entradas não negativas.
+    Init = And(pc == 1, x == a, y == b, z == BitVecVal(0, n))
 
-        T1 = And(pc == 1, pc1 == 2, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
+    T1 = And(pc == 1, pc1 == 2, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
 
-        T2 = And(pc == 2, y == 0, pc1 == 6, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
+    T2 = And(pc == 2, y == 0, pc1 == 6, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
 
-        T3 = And(pc == 2, y != 0, Extract(0, 0, y) == 0, pc1 == 3, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
+    T3 = And(pc == 2, y != 0, Extract(0, 0, y) == 0, pc1 == 3, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
 
-        T4 = And(pc == 2, y != 0, Extract(0, 0, y) == 1, pc1 == 4, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
+    T4 = And(pc == 2, y != 0, Extract(0, 0, y) == 1, pc1 == 4, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
 
-        OverflowLeft = Extract(n-1, n-1, x) == 1
+    OverflowLeft = Extract(n-1, n-1, x) == 1
 
-        T5 = And(pc == 3, OverflowLeft, pc1 == 5, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
+    T5 = And(pc == 3, OverflowLeft, pc1 == 5, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
 
-        T6 = And(pc == 3, Not(OverflowLeft), pc1 == 2, a1 == a, b1 == b, x1 == x << 1, y1 == LShR(y, 1), z1 == z)
+    T6 = And(pc == 3, Not(OverflowLeft), pc1 == 2, a1 == a, b1 == b, x1 == x << 1, y1 == LShR(y, 1), z1 == z)
 
-        OverflowAdd = ULT(x + z, z)
+    OverflowAdd = ULT(x + z, z)
 
-        T7 = And(pc == 4, OverflowAdd, pc1 == 7, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
+    T7 = And(pc == 4, OverflowAdd, pc1 == 7, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
 
-        T8 = And(pc == 4, Not(OverflowAdd), pc1 == 2, a1 == a, b1 == b, x1 == x, y1 == y - 1, z1 == z + x)
+    T8 = And(pc == 4, Not(OverflowAdd), pc1 == 2, a1 == a, b1 == b, x1 == x, y1 == y - 1, z1 == z + x)
 
-        T9 = And(pc == 6, pc1 == 6, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
+    T9 = And(pc == 6, pc1 == 6, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
 
-        T10 = And(Or(pc == 5, pc == 7), pc1 == pc, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
+    T10 = And(Or(pc == 5, pc == 7), pc1 == pc, a1 == a, b1 == b, x1 == x, y1 == y, z1 == z)
 
-        Trans = Or(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)
+    Trans = Or(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)
 
-        Error = Or(pc == 5, pc == 7)
+    Error = Or(pc == 5, pc == 7)
 
 
-        # ALINEA B - INVARIANTE PRINCIPAL (k-indução com k = 1)
-        # P exprime igualdade módulo 2**n. Q reforça as hipóteses de controlo.
+    # ALINEA B - INVARIANTE PRINCIPAL (k-indução com k = 1)
+    # P exprime igualdade módulo 2**n. Q reforça as hipóteses de controlo.
 
-        P = (x*y + z == a*b)
+    P = (x*y + z == a*b)
 
-        Q = And(Implies(pc == 3, And(y != 0, Extract(0, 0, y) == 0)), Implies(pc == 4,Extract(0, 0, y) == 1))
+    Q = And(Implies(pc == 3, And(y != 0, Extract(0, 0, y) == 0)), Implies(pc == 4,Extract(0, 0, y) == 1))
 
-        R = And(P, Q)
+    R = And(P, Q)
 
-        P1 = (x1*y1 + z1 == a1*b1)
+    P1 = (x1*y1 + z1 == a1*b1)
 
-        Q1 = And(Implies(pc1 == 3, And(y1 != 0, Extract(0, 0, y1) == 0)), Implies(pc1 == 4, Extract(0, 0, y1) == 1))
+    Q1 = And(Implies(pc1 == 3, And(y1 != 0, Extract(0, 0, y1) == 0)), Implies(pc1 == 4, Extract(0, 0, y1) == 1))
 
-        R1 = And(P1, Q1)
+    R1 = And(P1, Q1)
 
-        provar("Base reforçada (k=1)", Init, Not(R))
+    provar("Base reforçada (k=1)", Init, Not(R))
 
-        transicoes = [T1, T2, T3, T4, T5, T6, T7, T8, T9, T10]
+    transicoes = [T1, T2, T3, T4, T5, T6, T7, T8, T9, T10]
 
-        for i, t in enumerate(transicoes, 1):
-            if i not in (6, 8):
-                provar(f"T{i}", R, t, Not(R1))
+    for i, t in enumerate(transicoes, 1):
+        if i not in (6, 8):
+            provar(f"T{i}", R, t, Not(R1))
 
-        # T6 e T8 são verificadas por composição: relações entre os estados
-        # e identidades algébricas. Isto evita consultas com produtos difíceis
-        # de resolver, sem substituir verificações por mensagens de sucesso.
-        estrutura_left = And(
-            x1 == 2*x, y == 2*y1, z1 == z,
-            a1 == a, b1 == b, Q1
-        )
-        estrutura_right = And(
-            x1 == x, y1 == y - 1, z1 == z + x,
-            a1 == a, b1 == b, Q1
-        )
-        provar("T6: estrutura modular", Q, T6, Not(estrutura_left))
-        provar("T8: estrutura modular", Q, T8, Not(estrutura_right))
+    # T6 e T8 são verificadas por composição: relações entre os estados
+    # e identidades algébricas. Isto evita consultas com produtos difíceis
+    # de resolver, sem substituir verificações por mensagens de sucesso.
+    estrutura_left = And(
+        x1 == 2*x, y == 2*y1, z1 == z,
+        a1 == a, b1 == b, Q1
+    )
+    estrutura_right = And(
+        x1 == x, y1 == y - 1, z1 == z + x,
+        a1 == a, b1 == b, Q1
+    )
+    provar("T6: estrutura modular", Q, T6, Not(estrutura_left))
+    provar("T8: estrutura modular", Q, T8, Not(estrutura_right))
 
-        def provar_identidades(bits, contexto):
-            u, v, w = BitVecs(f"u_{bits} v_{bits} w_{bits}", bits)
-            # LEFT: y = 2*v e x' = 2*x, logo x'*y' + z' = x*y + z.
-            provar(f"{contexto} T6: identidade", (2*u)*v + w != u*(2*v) + w)
-            # RIGHT: x*(y-1) + (z+x) = x*y + z.
-            provar(f"{contexto} T8: identidade", u*(v - 1) + (w + u) != u*v + w)
+    def provar_identidades(bits, contexto):
+        u, v, w = BitVecs(f"u_{bits} v_{bits} w_{bits}", bits)
+        # LEFT: y = 2*v e x' = 2*x, logo x'*y' + z' = x*y + z.
+        provar(f"{contexto} T6: identidade", (2*u)*v + w != u*(2*v) + w)
+        # RIGHT: x*(y-1) + (z+x) = x*y + z.
+        provar(f"{contexto} T8: identidade", u*(v - 1) + (w + u) != u*v + w)
 
-        # As estruturas e estas identidades, juntamente com R, implicam R1.
-        provar_identidades(n, "Invariante")
+    # As estruturas e estas identidades, juntamente com R, implicam R1.
+    provar_identidades(n, "Invariante")
 
-        # ALINEA C - PROVA DE SEGURANCA (k-indução com k = 1)
+    # ALINEA C - PROVA DE SEGURANCA (k-indução com k = 1)
 
-        limite = BitVecVal(2**(n//2), n)
-        InitSafe = And(Init, ULT(a, limite), ULT(b, limite))
+    limite = BitVecVal(2**(n//2), n)
+    InitSafe = And(Init, ULT(a, limite), ULT(b, limite))
 
-        def wide(v):
-            return ZeroExt(n, v)
+    def wide(v):
+        return ZeroExt(n, v)
 
-        # 2*n bits bastam para o produto de dois valores de n bits mais z:
-        # (2**n-1)**2 + (2**n-1) < 2**(2*n). Assim, E é igualdade exata.
-        E = (wide(x)*wide(y) + wide(z) == wide(a)*wide(b))
-        E1 = (wide(x1)*wide(y1) + wide(z1) == wide(a1)*wide(b1))
-        Error1 = Or(pc1 == 5, pc1 == 7)
+    # 2*n bits bastam para o produto de dois valores de n bits mais z:
+    # (2**n-1)**2 + (2**n-1) < 2**(2*n). Assim, E é igualdade exata.
+    E = (wide(x)*wide(y) + wide(z) == wide(a)*wide(b))
+    E1 = (wide(x1)*wide(y1) + wide(z1) == wide(a1)*wide(b1))
+    Error1 = Or(pc1 == 5, pc1 == 7)
 
-        SafeInv = And(E, Q, ULT(a, limite), ULT(b, limite), Not(Error))
-        SafeInv1 = And(E1, Q1, ULT(a1, limite), ULT(b1, limite), Not(Error1))
+    SafeInv = And(E, Q, ULT(a, limite), ULT(b, limite), Not(Error))
+    SafeInv1 = And(E1, Q1, ULT(a1, limite), ULT(b1, limite), Not(Error1))
 
-        provar("Base safety (k=1)", InitSafe, Not(SafeInv))
+    provar("Base safety (k=1)", InitSafe, Not(SafeInv))
 
-        for i, t in enumerate(transicoes, 1):
-            if i not in (6, 8):
-                provar(f"Safety T{i}", SafeInv, t, Not(SafeInv1))
+    for i, t in enumerate(transicoes, 1):
+        if i not in (6, 8):
+            provar(f"Safety T{i}", SafeInv, t, Not(SafeInv1))
 
-        # Nas transições sem overflow, as atualizações também são exatas
-        # quando estendidas a 2*n bits. Os restantes membros de SafeInv
-        # são preservados por a1=a, b1=b, Q1 e Not(Error1).
-        estrutura_left_exata = And(
-            wide(x1) == 2*wide(x), wide(y) == 2*wide(y1),
-            wide(z1) == wide(z), a1 == a, b1 == b, Q1, Not(Error1)
-        )
-        estrutura_right_exata = And(
-            wide(x1) == wide(x), wide(y1) == wide(y) - 1,
-            wide(z1) == wide(z) + wide(x),
-            a1 == a, b1 == b, Q1, Not(Error1)
-        )
-        provar("Safety T6: estrutura exata", Q, T6, Not(estrutura_left_exata))
-        provar("Safety T8: estrutura exata", Q, T8, Not(estrutura_right_exata))
-        # As mesmas identidades a 2*n bits provam E => E1 em T6 e T8.
-        provar_identidades(2*n, "Safety")
-        provar("Invariante implica segurança", SafeInv, Error)
+    # Nas transições sem overflow, as atualizações também são exatas
+    # quando estendidas a 2*n bits. Os restantes membros de SafeInv
+    # são preservados por a1=a, b1=b, Q1 e Not(Error1).
+    estrutura_left_exata = And(
+        wide(x1) == 2*wide(x), wide(y) == 2*wide(y1),
+        wide(z1) == wide(z), a1 == a, b1 == b, Q1, Not(Error1)
+    )
+    estrutura_right_exata = And(
+        wide(x1) == wide(x), wide(y1) == wide(y) - 1,
+        wide(z1) == wide(z) + wide(x),
+        a1 == a, b1 == b, Q1, Not(Error1)
+    )
+    provar("Safety T6: estrutura exata", Q, T6, Not(estrutura_left_exata))
+    provar("Safety T8: estrutura exata", Q, T8, Not(estrutura_right_exata))
+    # As mesmas identidades a 2*n bits provam E => E1 em T6 e T8.
+    provar_identidades(2*n, "Safety")
+    provar("Invariante implica segurança", SafeInv, Error)
 
-        # ALINEA D - PROVA DE TERMINACAO
-        # Propriedade de animação: F(pc=5 ou pc=6 ou pc=7).
-        # Com InitSafe, a segurança exclui os erros e obtemos F(pc=6).
-        Terminal = Or(Error, pc == 6)
-        Dominio = And(pc >= 1, pc <= 7)
-        Dominio1 = And(pc1 >= 1, pc1 <= 7)
+    # ALINEA D - PROVA DE TERMINACAO
+    # Propriedade de animação: F(pc=5 ou pc=6 ou pc=7).
+    # Com InitSafe, a segurança exclui os erros e obtemos F(pc=6).
+    Terminal = Or(Error, pc == 6)
+    Dominio = And(pc >= 1, pc <= 7)
+    Dominio1 = And(pc1 >= 1, pc1 <= 7)
 
-        provar("Terminação: base do controlo", Init, Not(And(Dominio, Q)))
-        provar("Terminação: preservação do controlo",
-               Dominio, Q, Trans, Not(And(Dominio1, Q1)))
+    provar("Terminação: base do controlo", Init, Not(And(Dominio, Q)))
+    provar("Terminação: preservação do controlo",
+           Dominio, Q, Trans, Not(And(Dominio1, Q1)))
 
-        def ranking(controle, multiplicador):
-            terminal = Or(controle == 5, controle == 6, controle == 7)
-            fase = If(controle == 1, 3, If(controle == 2, 2, 1))
-            # BV2Int interpreta y sem sinal; a conta do ranking usa Int,
-            # para que o próprio ranking não possa sofrer overflow.
-            return If(terminal, 0, 3*BV2Int(multiplicador) + fase)
+    def ranking(controle, multiplicador):
+        terminal = Or(controle == 5, controle == 6, controle == 7)
+        fase = If(controle == 1, 3, If(controle == 2, 2, 1))
+        # BV2Int interpreta y sem sinal; a conta do ranking usa Int,
+        # para que o próprio ranking não possa sofrer overflow.
+        return If(terminal, 0, 3*BV2Int(multiplicador) + fase)
 
-        rho = ranking(pc, y)
-        rho1 = ranking(pc1, y1)
-        provar("Terminação: ranking não negativo", Dominio, rho < 0)
-        provar("Terminação: ranking diminui",
-               Dominio, Q, Trans, Not(Terminal), Not(rho1 < rho))
-        # As guardas das transições cobrem todos os estados do domínio.
-        # Logo não há bloqueios; a descida nos naturais obriga a atingir
-        # um terminal. Os ciclos T9 e T10 apenas representam a paragem.
+    rho = ranking(pc, y)
+    rho1 = ranking(pc1, y1)
+    provar("Terminação: ranking não negativo", Dominio, rho < 0)
+    provar("Terminação: ranking diminui",
+           Dominio, Q, Trans, Not(Terminal), Not(rho1 < rho))
+    # As guardas das transições cobrem todos os estados do domínio.
+    # Logo não há bloqueios; a descida nos naturais obriga a atingir
+    # um terminal. Os ciclos T9 e T10 apenas representam a paragem.
 
-        concluido = all(resultados)
-        if concluido:
-            print(f"Todas as {len(resultados)} obrigações foram provadas para n={n}.")
-        else:
-            print(f"Verificação incompleta para n={n}: existem falhas ou resultados inconclusivos.")
-        return concluido
-    return (verificar,)
+    concluido = all(resultados)
+    if concluido:
+        print(f"Todas as {len(resultados)} obrigações foram provadas para n={n}.")
+    else:
+        print(f"Verificação incompleta para n={n}: existem falhas ou resultados inconclusivos.")
+    return concluido
 
 
 @app.cell
@@ -283,7 +282,7 @@ def _(Path):
 
 
 @app.cell
-def _(inspect, textwrap, verificar):
+def _(inspect, textwrap):
     codigo_exe3 = textwrap.dedent(inspect.getsource(verificar))
     _marcadores = ["    # ALINEA A", "    # ALINEA B", "    # ALINEA C", "    # ALINEA D", "    concluido = all(resultados)"]
     _posicoes = [0] + [codigo_exe3.index(_m) for _m in _marcadores] + [len(codigo_exe3)]
@@ -366,7 +365,7 @@ def _(mo):
 
 
 @app.cell
-def _(contextlib, executar, io, larguras, mo, time, timeout, verificar):
+def _(contextlib, executar, io, larguras, mo, time, timeout):
     mo.stop(not executar.value, mo.md("Carrega em **Executar verificação** para obter novos resultados."))
     mo.stop(not larguras.value, mo.md("Seleciona pelo menos uma largura."))
     linhas_resultado = []
@@ -419,8 +418,6 @@ def _(mo, pasta_exe3):
     _registo = _ficheiro.read_text(encoding="utf-8") if _ficheiro.exists() else "Registo não encontrado. Executa os testes no botão acima."
     mo.accordion({"Saída integral dos testes de referência": mo.md("```text\n" + _registo + "\n```")})
     return
-
-
 
 
 if __name__ == "__main__":
