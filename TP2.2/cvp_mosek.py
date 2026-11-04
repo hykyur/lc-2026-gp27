@@ -316,8 +316,6 @@ def _(mo):
     Por isso, um ell maior não implica necessariamente mais tempo. Ao mudar k,
     também muda m e a instância gerada. O número de combinações é $(\ell+1)^k$,
     mas o solver não precisa de as enumerar todas.
-
-    
     """)
     return
 
